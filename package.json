@@ -1,0 +1,19 @@
+{
+  "name": "jestcause",
+  "version": "0.0.1",
+  "description": "Hang out with friends!",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JestCause/jestCause.git"
+  },
+  "author": "Jest.js Cause",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JestCause/jestCause/issues"
+  },
+  "homepage": "https://github.com/JestCause/jestCause#readme"
+}
