@@ -1,11 +1,5 @@
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var db = require('../server.js');
-
-var ourTest = db.knex.select().from('users')
-.then(function(results) {
-	console.log(results);
-})
 
 
 module.exports = function(app, express) {

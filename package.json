@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/JestCause/jestCause#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
-    "bookshelf": "^0.10.3",
     "express": "^4.15.2",
     "knex": "^0.12.7",
     "morgan": "^1.8.1",
     "mysql": "^2.13.0",
+    "path": "^0.12.7",
     "request": "^2.81.0"
   }
 }
