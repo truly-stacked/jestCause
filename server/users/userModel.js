@@ -1,9 +1,8 @@
-// var db = require('../server.js');
+var db = require('../config/config.js');
+var bcrypt = require('bcrypt-nodejs');
 
-// // var ourTest = db.knex.select().from('users')
-// // .then(function(results) {
-// // 	console.log(results);
-// // })
+// var User = db.db.Model.extend({
+// 	tableName: 'users',
 
-// console.log(db);
 
+// })
