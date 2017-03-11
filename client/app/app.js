@@ -1,6 +1,7 @@
 angular.module('hang', [
 	'hang.auth',
 	'hang.home',
+	'hang.services',
 	'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider){
