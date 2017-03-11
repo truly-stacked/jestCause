@@ -6,3 +6,14 @@ var bcrypt = require('bcrypt-nodejs');
 
 
 // })
+
+module.exports = {
+	getUsers: function(callback) {
+		db.select().from('users')
+		.then(function(users) {
+			callback(users);
+		}).catch(function(err) {
+			console.error(err);
+		})
+	}
+}
