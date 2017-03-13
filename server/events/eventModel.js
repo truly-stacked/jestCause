@@ -15,7 +15,8 @@ module.exports = {
 		db('events').insert({
 			where: event.where,
 			when: event.when,
-			description: event.description
+			description: event.description,
+			host_id: (db.select('id').from('users').where('email', event.email))
 		}).then(function(inserted) {
 			callback(inserted);
 		}).catch(function(err) {
