@@ -1,20 +1,25 @@
 var User = require('./userModel.js');
 
-
 module.exports = {
-	signin: function(user) {
-
+	signin: function(req, res, next) {
+		User.signin(req.body, (response) => {
+			res.send(response);
+		})
 	},
 
-	signup: function(user) {
-
+	signup: function(req, res, next) {
+		User.signup(req.body, (response) => {
+			res.send(response);
+		})
 	},
 
 	getUsers: function(req, res, next) {
 		User.getUsers(response => res.send(response));
 	},
 
-	updateUser: function(user) {
-
+	updateUser: function(req, res, next) {
+		User.updateUser(req.body, (response) => {
+			res.send(response);
+		})
 	}
 }
