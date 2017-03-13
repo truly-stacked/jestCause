@@ -39,13 +39,13 @@ module.exports = {
 	},
 
 	updateUser: function (user, callback) {
-		console.log('user has been updated');
+		console.log('user has been updated with ', user);
 		db('users').where('email', user.email)
 			.update({
 				profile_url: user.profile_url
 			})
 			.then((updated) => {
-				callback('Updated')
+				callback('updated')
 			}).catch((err) => {
 				callback(err);
 			})

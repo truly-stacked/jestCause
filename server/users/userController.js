@@ -19,6 +19,7 @@ module.exports = {
 
 	updateUser: function(req, res, next) {
 		User.updateUser(req.body, (response) => {
+			console.log('got a response! ', response)
 			res.send(response);
 		})
 	}
