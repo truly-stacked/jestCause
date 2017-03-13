@@ -16,6 +16,7 @@ db.schema.hasTable('users').then(exists => {
 			table.string('email').unique();
 			table.string('password');
 			table.string('profile_url');
+			table.boolean('hang').defaultTo(true);
 		});
 	}
 

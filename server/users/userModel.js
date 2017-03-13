@@ -42,7 +42,8 @@ module.exports = {
 		console.log('user has been updated with ', user);
 		db('users').where('email', user.email)
 			.update({
-				profile_url: user.profile_url
+				profile_url: user.profile_url,
+				hang: user.hang
 			})
 			.then((updated) => {
 				callback('updated')
