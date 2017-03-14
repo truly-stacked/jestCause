@@ -1,4 +1,4 @@
-angular.modules('hang.services', [])
+angular.module('hang.services', [])
 	
 	.factory('Auth', function($http, $location, $window){
 		var signin = function(user) {

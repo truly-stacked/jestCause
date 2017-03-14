@@ -1,6 +1,6 @@
 angular.module('hang', [
 	'hang.auth',
-	'hang.home',
+	// 'hang.home',
 	'hang.services',
 	'ngRoute'
 ])
@@ -19,6 +19,6 @@ angular.module('hang', [
 		});
 
 
-		$httpProvider.interceptors.push('AttachTokens');
+		// $httpProvider.interceptors.push('AttachTokens');
 })
-.factory('AttachTokens', function($window)
+// .factory('AttachTokens', function($window){});
