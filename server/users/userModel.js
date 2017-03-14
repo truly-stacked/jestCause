@@ -1,56 +1,44 @@
 var db = require('../config/config.js');
 var bcrypt = require('bcrypt-nodejs');
-var SALT_WORK_FACTOR = 10;
+var helpers = require('../config/helpers.js');
+
 
 
 module.exports = {
+
 	getUsers: function (callback) {
 		db.select().from('users')
 			.then(function (users) {
-				callback(users);
+				callback(null, users);
 			}).catch(function (err) {
-				console.error(err);
-			})
-	},
-
-	signin: function(user, callback) {
-		db.select().from('users')
-			.where('email', user.email)
-			.then(function(user) {
-				if (!user) {
-					callback('No user!')
-				}
-			})
-
-
-		db.select().from('users')
-			.where({
-				email: user.email,
-				password: user.password
-			})
-			.then((logged) => {
-				callback("Logged")
-			}).catch((err) => {
 				callback(err);
 			})
 	},
 
+	signin: function(user, password, callback) {
+		console.log('signin in with user: ', user, ' pass: ', password)
+		helpers.checkPass(user, password, function(err, match) {
+			if (err) {
+				callback(err);
+			}
+			else {
+				callback(null, match)
+			}
+		})
+	},
+
 	signup: function (user, callback) {
-		console.log('user being created');
-		bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-			if (err) console.error(err);
-			bcrypt.hash(user.email, salt, null, function(err, result) {
-				if (err) console.error(err);
-				db('users').insert({
-					name: user.name,
-					email: user.email,
-					password: result,
-					profile_url: user.profile_url
-				}).then((inserted) => {
-					callback('Signed Up');
-				}).catch((err) => {
-					callback(err);
-				})
+		console.log('user being created: ', user);
+		helpers.hashPass(user.password, function(err, result) {
+			db('users').insert({
+				name: user.name,
+				email: user.email,
+				password: result,
+				profile_url: user.profile_url
+			}).then((inserted) => {
+				callback(null, inserted);
+			}).catch((err) => {
+				callback(err);
 			});
 		});
 	},
@@ -63,9 +51,12 @@ module.exports = {
 				hang: user.hang
 			})
 			.then((updated) => {
-				callback('updated')
-			}).catch((err) => {
-				callback(err);
-			})
+				if (updated) {
+					callback(null, updated);
+				}
+				else {
+					callback('Error updating');
+				}
+			});
 	}
 }

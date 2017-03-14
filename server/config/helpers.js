@@ -1,5 +1,7 @@
-var brcypt = require('brcypt-nodejs');
+var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
+var db = require('./config.js')
+var SALT_WORK_FACTOR = 10;
 
 module.exports = {
 	checkAuth: function(req, res, next) {
@@ -22,5 +24,40 @@ module.exports = {
 				next(err);
 			})
 		}
-	}
+	},
+
+	hashPass: function(password, callback) {
+		bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+			if (err) {
+				callback(err, null);
+			}
+			else {
+				bcrypt.hash(password, salt, null, function(err, result) {
+					if (err) {
+						callback(err, null);
+					}
+					else {
+						callback(null, result);
+					}
+				});
+			}
+		});
+	},
+
+	checkPass: function(user, pass, callback) {
+		db.select('password').from('users')
+		.where('email', user)
+		.then(function(user) {	
+			bcrypt.compare(pass, user[0].password, function(err, isMatch) {
+				if (err) {
+					console.log('pass error ', err)
+					callback(err, null);
+				}
+				else {
+					console.log('match ', isMatch)
+					callback(null, isMatch);
+				}
+			});
+		});
+	}	
 }
