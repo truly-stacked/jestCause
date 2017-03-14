@@ -1,5 +1,7 @@
 var db = require('../config/config.js');
 var bcrypt = require('bcrypt-nodejs');
+var SALT_WORK_FACTOR = 10;
+
 
 module.exports = {
 	getUsers: function (callback) {
@@ -13,6 +15,15 @@ module.exports = {
 
 	signin: function(user, callback) {
 		db.select().from('users')
+			.where('email', user.email)
+			.then(function(user) {
+				if (!user) {
+					callback('No user!')
+				}
+			})
+
+
+		db.select().from('users')
 			.where({
 				email: user.email,
 				password: user.password
@@ -25,17 +36,23 @@ module.exports = {
 	},
 
 	signup: function (user, callback) {
-		console.log('user has been created');
-		db('users').insert({
-			name: user.name,
-			email: user.email,
-			password: user.password,
-			profile_url: user.profile_url
-		}).then((inserted) => {
-			callback('Signed Up');
-		}).catch((err) => {
-			callback(err);
-		})
+		console.log('user being created');
+		bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+			if (err) console.error(err);
+			bcrypt.hash(user.email, salt, null, function(err, result) {
+				if (err) console.error(err);
+				db('users').insert({
+					name: user.name,
+					email: user.email,
+					password: result,
+					profile_url: user.profile_url
+				}).then((inserted) => {
+					callback('Signed Up');
+				}).catch((err) => {
+					callback(err);
+				})
+			});
+		});
 	},
 
 	updateUser: function (user, callback) {
