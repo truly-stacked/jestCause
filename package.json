@@ -4,8 +4,8 @@
   "description": "Hang out with friends!",
   "main": "server.js",
   "scripts": {
-    "start": "grunt start",
-    "test": "grunt test"
+    "start": "node server/server.js",
+    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/JestCause/jestCause#readme",
   "dependencies": {
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
