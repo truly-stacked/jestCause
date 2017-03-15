@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "test"
+    "test": "test",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
