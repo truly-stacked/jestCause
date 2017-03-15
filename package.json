@@ -4,8 +4,8 @@
   "description": "Hang out with friends!",
   "main": "server.js",
   "scripts": {
-    "start": "grunt start",
-    "test": "grunt test"
+    "start": "app",
+    "test": "test"
   },
   "repository": {
     "type": "git",
