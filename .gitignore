@@ -20,9 +20,6 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Bower dependency directory (https://bower.io/)
-bower_components
-
 # node-waf configuration
 .lock-wscript
 
@@ -31,7 +28,6 @@ build/Release
 
 # Dependency directories
 node_modules
-bower_components
 jspm_packages
 
 # Optional npm cache directory
