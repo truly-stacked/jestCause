@@ -4,7 +4,7 @@
   "description": "Hang out with friends!",
   "main": "server.js",
   "scripts": {
-    "start": "app",
+    "start": "node server.js",
     "test": "test"
   },
   "repository": {
