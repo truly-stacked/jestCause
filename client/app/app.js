@@ -4,7 +4,7 @@ angular.module('hang', [
 	'hang.services',
 	'ngRoute'
 ])
-.config(function($routeProvider, $httpProvider){
+.config(function($routeProvider, $httpProvider, $locationProvider){
 	$routeProvider
 		.when('/signin', {
 			templateUrl: 'app/auth/signin.html',
@@ -18,6 +18,7 @@ angular.module('hang', [
 			redirectTo: '/signup'
 		});
 
+	$locationProvider.hashPrefix('');
 
 		// $httpProvider.interceptors.push('AttachTokens');
 })
