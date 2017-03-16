@@ -7,6 +7,7 @@ module.exports = function(app, express) {
 	app.get('/api/users', userController.getUsers);
 	app.put('/api/users', userController.updateUser);
 	app.get('/api/events', eventController.getEvents);
+	app.get('/api/hostedEvents', eventController.getHostedEvents);
 	app.post('/api/events', eventController.createEvent);
 }
 
