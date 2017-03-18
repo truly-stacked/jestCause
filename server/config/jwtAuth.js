@@ -8,15 +8,7 @@ module.exports = {
       next(new Error('No Token!!!!!!'));
     } else {
       var user = jwt.decode(token, 'secret');
-      db.select('email').from('users')
-        .where('email', user[0].email)
-        .then(function (foundUser) {
-          if (foundUser) {
-            next();
-          } else {
-            next(new Error('Who are you?'));
-          }
-        })
+      next();
     }
   },
 }

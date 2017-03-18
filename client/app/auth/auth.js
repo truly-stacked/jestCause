@@ -14,12 +14,13 @@ angular.module('hang.auth', [])
 				.catch(function (error) {
 					console.error(error);
 				});
-		}
+		};
+
 		$scope.signup = function () {
 			Auth.signup($scope.user)
 				.then(function (token) {
-					$window.localStorage.setItem('com.hang', token);
 					console.log(token)
+					$window.localStorage.setItem('com.hang', token);
 					$location.path('/home');
 				})
 				.catch(function (error) {

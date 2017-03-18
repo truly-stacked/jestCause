@@ -1,6 +1,6 @@
 angular.module('hang', [
-		'hang.auth',
 		'hang.services',
+		'hang.auth',
 		'ngRoute'
 	])
 	.config(function ($routeProvider, $httpProvider, $locationProvider) {
@@ -24,7 +24,6 @@ angular.module('hang', [
 		$locationProvider.hashPrefix('');
 		$httpProvider.interceptors.push('AttachTokens');
 	})
-
 
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
