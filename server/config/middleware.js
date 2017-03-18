@@ -18,5 +18,5 @@ module.exports = function(app, express) {
 	app.use(bodyParser.json());
 	app.use(express.static(__dirname + '/../../client'));
 	app.use('/node_modules', express.static(__dirname + '/../../node_modules'));
-	app.use(ignore('/api/users/signin', '/api/users/signup', jwtAuth.check));
+	// app.use(ignore('/api/users/signin', '/api/users/signup', jwtAuth.check));
 }

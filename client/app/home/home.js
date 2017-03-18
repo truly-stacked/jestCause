@@ -4,15 +4,17 @@ angular.module('hang.home', [])
 
 $scope.currentNavItem="hang";
 
-$scope.user = {
-	email: 'danhendrix@gmail.com',
-	profile_url: 'https://avatars0.githubusercontent.com/u/1616159?v=3&s=460',
-	hang: true
-};
+Users.getCurrentUser()
+.then(user => $scope.user = user[0]);
+
 $scope.toggleHang = function() {
 	$scope.user.hang = !$scope.user.hang;
 	console.log($scope.user.hang)
+	Users.updateUser($scope.user)
+	.then(resp => console.log('updated ', resp))
 }
+
+$scope.getCurrentUser = Users.getCurrentUser;
 
 $scope.toEvent = function() {
 	$location.path('/createEvent')

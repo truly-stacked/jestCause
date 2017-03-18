@@ -45,11 +45,9 @@ module.exports = {
 	},
 
 	checkPass: function(user, pass, callback) {
-		console.log('initial checkpass user ', user)
 		db.select().from('users')
 		.where('email', user)
 		.then(function(user) {	
-			console.log(user)
 			bcrypt.compare(pass, user[0].password, function(err, isMatch) {
 				if (err) {
 					console.log('pass error ', err)
