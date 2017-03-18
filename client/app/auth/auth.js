@@ -31,14 +31,4 @@ angular.module('hang.auth', [])
 		$scope.signout = function () {
 			Auth.signout();
 		}
-
-		//testing tokens
-		$http({
-				method: 'GET',
-				url: '/api/users',
-			})
-			.then(function (resp) {
-				$scope.data = resp.data;
-			});
-
 	});
