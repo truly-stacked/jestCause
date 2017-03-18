@@ -39,4 +39,25 @@ angular.module('hang.services', [])
 			isAuth: isAuth,
 			signout: signout
 		};
-	});
+	})
+
+	.factory('Users', function($http, $location, $window) {
+		var getUsers = function() {
+			console.log('getting called')
+			return $http({
+				method: 'GET',
+				url: '/api/users/'
+			})
+			.then(function(resp) {
+				console.log(resp)
+				return resp.data;
+			});
+		};
+
+		return {
+			getUsers
+		}
+	})
+
+
+
