@@ -39,4 +39,54 @@ angular.module('hang.services', [])
 			isAuth: isAuth,
 			signout: signout
 		};
-	});
+	})
+
+	.factory('Users', function($http, $location, $window) {
+		var currentUser;
+
+		var getUsers = function() {
+			console.log('getting called')
+			return $http({
+				method: 'GET',
+				url: '/api/users/'
+			})
+			.then(function(resp) {
+				return resp.data;
+			});
+		};
+
+		var updateUser = function(user) {
+			return $http({
+				method: 'PUT',
+				url: '/api/users/',
+				data: user
+			})
+			.then(function(resp) {
+				console.log(resp, 'from updateUser');
+				return resp.data
+			});
+		};
+
+		var saveUser = function(user) {
+			currentUser = user;
+		};
+
+		var getCurrentUser = function() {
+			console.log('getcurrentuser getting called')
+			return $http({
+				method: 'GET',
+				url: '/api/currentUser',
+			})
+			.then(user => user.data);
+		}
+
+		return {
+			getUsers,
+			updateUser,
+			saveUser,
+			getCurrentUser
+		}
+	})
+
+
+

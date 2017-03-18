@@ -1,6 +1,6 @@
 angular.module('hang.auth', [])
 
-	.controller('AuthController', function ($scope, $window, $location, $http, Auth) {
+	.controller('AuthController', function ($scope, $window, $location, $http, Auth, Users) {
 		$scope.user = {};
 		$scope.data;
 
@@ -9,6 +9,8 @@ angular.module('hang.auth', [])
 			Auth.signin($scope.user)
 				.then(function (token) {
 					$window.localStorage.setItem('com.hang', token);
+					console.log('signing in token: ', token)
+					Users.saveUser(token);
 					$location.path('/home');
 				})
 				.catch(function (error) {
@@ -19,8 +21,8 @@ angular.module('hang.auth', [])
 		$scope.signup = function () {
 			Auth.signup($scope.user)
 				.then(function (token) {
-					console.log(token)
 					$window.localStorage.setItem('com.hang', token);
+					Users.saveUser($scope.user);
 					$location.path('/home');
 				})
 				.catch(function (error) {
@@ -31,14 +33,4 @@ angular.module('hang.auth', [])
 		$scope.signout = function () {
 			Auth.signout();
 		}
-
-		//testing tokens
-		$http({
-				method: 'GET',
-				url: '/api/users',
-			})
-			.then(function (resp) {
-				$scope.data = resp.data;
-			});
-
 	});

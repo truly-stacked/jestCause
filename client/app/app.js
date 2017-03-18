@@ -1,29 +1,37 @@
 angular.module('hang', [
-		'hang.services',
-		'hang.auth',
-		'ngRoute'
-	])
-	.config(function ($routeProvider, $httpProvider, $locationProvider) {
-		$routeProvider
-			.when('/signin', {
-				templateUrl: 'app/auth/signin.html',
-				controller: 'AuthController'
-			})
-			.when('/signup', {
-				templateUrl: 'app/auth/signup.html',
-				controller: 'AuthController'
-			})
-			.when('/home', {
-				templateUrl: 'app/auth/home.html',
-				controller: 'AuthController'
-			})
-			.otherwise({
-				redirectTo: '/signin'
-			});
+	'hang.auth',
+	'hang.home',
+	'hang.services',
+	'hang.event',
+	'ngMaterial',
+	'ngRoute'
+])
+.config(function($routeProvider, $httpProvider, $locationProvider){
+	$routeProvider
+		.when('/signin', {
+			templateUrl: 'app/auth/signin.html',
+			controller: 'AuthController'
+		})
+		.when('/signup', {
+			templateUrl: 'app/auth/signup.html',
+			controller: 'AuthController'
+		})
+		.when('/home', {
+			templateUrl: 'app/home/home.html',
+			controller: 'HomeController'
+		})
+		.when('/createEvent', {
+			templateUrl: 'app/event/createEvent.html',
+			controller: 'EventController'
+		})
+		.otherwise({
+			redirectTo: '/signin'
+		});
 
 		$locationProvider.hashPrefix('');
 		$httpProvider.interceptors.push('AttachTokens');
-	})
+	})	
+
 
 	.factory('AttachTokens', function ($window) {
 		var attach = {

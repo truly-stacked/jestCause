@@ -45,7 +45,7 @@ module.exports = {
 	},
 
 	checkPass: function(user, pass, callback) {
-		db.select('password').from('users')
+		db.select().from('users')
 		.where('email', user)
 		.then(function(user) {	
 			bcrypt.compare(pass, user[0].password, function(err, isMatch) {

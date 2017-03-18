@@ -16,7 +16,6 @@ module.exports = {
 	},
 
 	signin: function(user, password, callback) {
-		console.log('signin in with user: ', user, ' pass: ', password)
 		helpers.checkPass(user, password, function(err, match) {
 			if (err) {
 				callback(err);

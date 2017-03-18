@@ -1,6 +1,7 @@
 var User = require('./userModel.js');
 var db = require('../config/config.js');
 var jwt = require('jwt-simple');
+var helpers = require('../config/helpers.js');
 
 
 
@@ -74,5 +75,23 @@ module.exports = {
 				res.sendStatus(200);
 			}
 		})
-	}
+	},
+
+	currentUser: function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No Token!!!!!!'));
+    } else {
+    	console.log(' a token: ', token)
+      var user = jwt.decode(token, 'secret');
+      console.log('heres the current jwt: ', user)
+      res.json(user);
+    }
+  }
+
 }
+
+
+
+
+

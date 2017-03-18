@@ -1,0 +1,17 @@
+<div ng-cloak>
+	<md-content class="md-padding">
+		<md-toolbar layout-align="space-between"
+		md-selected-nav-item="currentNavItem"
+    nav-bar-aria-label="navigation links" layout="row">
+		<md-button ng-click="goHome()" name="createEvent">
+		Back
+		</md-button>
+		<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+		Hang
+		</md-button>
+		<md-button class ="md-primary md-raised" class="settings" ng-click="showMenu($event)">
+		<img id="homeAvatar" src={{user.profile_url}}>
+		</md-button>
+	</md-toolbar>
+</md-content>
+</div>

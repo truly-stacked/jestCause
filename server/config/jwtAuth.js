@@ -8,6 +8,7 @@ module.exports = {
       next(new Error('No Token!!!!!!'));
     } else {
       var user = jwt.decode(token, 'secret');
+      console.log('heres the current jwt: ', user)
       next();
     }
   },
