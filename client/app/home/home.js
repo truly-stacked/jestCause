@@ -2,6 +2,7 @@ angular.module('hang.home', [])
 
 .controller('HomeController', function($scope, Users, $mdPanel, $location) {
 
+$scope.eventGuests = [];
 $scope.currentNavItem="hang";
 
 Users.getCurrentUser()
@@ -54,6 +55,16 @@ $scope.showMenu = function($event) {
 				console.log(showing)
 			})
 		});
+}
+
+$scope.userEventAdd = function() {
+	this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
+	if (this.item.invited) {
+	$scope.eventGuests.push(this.item.email);		
+	} else {
+		$scope.eventGuests.splice($scope.eventGuests.indexOf(this.item.email),1)
+	} 	
+	console.log($scope.eventGuests);
 }
 
 

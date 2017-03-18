@@ -88,5 +88,25 @@ angular.module('hang.services', [])
 		}
 	})
 
+	.factory('Events', function($http, $location, $window) {
+		var getEvents = function(user) {
+			console.log('calling getevents')
+			return $http({
+				method: 'GET',
+				url: '/api/events',
+				headers: {
+					email: user 
+				}
+			})
+			.then(resp => {
+				console.log('inside get events ', resp);
+				return resp.data;
+			});
+		}
+		return {
+			getEvents
+		}
+	});
+
 
 

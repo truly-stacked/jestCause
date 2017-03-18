@@ -17,3 +17,7 @@ h1 {
 	max-height: 75px;
 	max-width: 50px;
 }
+
+.userInvited {
+	color: tomato;
+}
