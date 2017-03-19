@@ -38,7 +38,7 @@ angular.module('hang.home', [])
 				.placeholder('url link')
 				.ariaLabel('url link')
 				.targetEvent(ev)
-				.ok('Confirm!')
+				.ok('Confirm')
 				.cancel('Cancel');
 
 			$mdDialog.show(confirm).then((result) => {
