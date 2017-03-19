@@ -2,7 +2,6 @@ angular.module('hang', [
 	'hang.auth',
 	'hang.home',
 	'hang.services',
-	'hang.event',
 	'ngMaterial',
 	'ngRoute'
 ])
@@ -22,7 +21,7 @@ angular.module('hang', [
 		})
 		.when('/createEvent', {
 			templateUrl: 'app/event/createEvent.html',
-			controller: 'EventController'
+			controller: 'HomeController'
 		})
 		.otherwise({
 			redirectTo: '/signin'

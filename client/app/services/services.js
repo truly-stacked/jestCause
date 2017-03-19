@@ -117,6 +117,24 @@ angular.module('hang.services', [])
 				console.log('inside get events ', resp);
 				return resp.data;
 			});
+		};
+
+		var createEvent = function(event) {
+			return $http({
+				method: 'POST',
+				url: '/api/events',
+				data: {
+					email: event.email,
+					where: event.where,
+					when: event.when,
+					description: event.description,
+					guests: event.guests
+				}
+			})
+			.then(resp => {
+				console.log(resp)
+				return resp;
+			});
 		}
 		return {
 			getEvents,

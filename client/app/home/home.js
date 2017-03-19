@@ -1,5 +1,4 @@
 angular.module('hang.home', [])
-
 	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth) {
 
 		$scope.eventGuests = [];
@@ -67,3 +66,4 @@ angular.module('hang.home', [])
 		Users.getUsers()
 			.then(users => $scope.users = users);
 	})
+
