@@ -7,26 +7,7 @@
 			<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
 				Hang
 			</md-button>
-			<md-menu-bar>
-				<md-menu>
-					<md-button class="settings" ng-click="$mdMenu.open($event)">
-						<!--<img id="homeAvatar" src={{user.profile_url}}> -->
-						Settings
-					</md-button>
-					<md-menu-content width="3">
-						<md-menu-item md-menu-origin md-menu-align-target>
-							<md-button ng-click="changeUrl($event)">
-								Change Profile URL
-							</md-button>
-						</md-menu-item>
-						<md-menu-item>
-							<md-button ng-click="signout()">
-								Logout
-							</md-button>
-						</md-menu-item>
-					</md-menu-content>
-				</md-menu>
-			</md-menu-bar>
+			<div ng-include="'app/home/menu.html'"></div>
 		</md-toolbar>
 	</md-content>
 </div>
