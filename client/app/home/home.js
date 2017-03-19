@@ -1,4 +1,4 @@
-angular.module('hang.home', ['ngMaterial'])
+angular.module('hang.home', [])
 
 	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth) {
 
@@ -8,7 +8,7 @@ angular.module('hang.home', ['ngMaterial'])
 		Users.getCurrentUser()
 			.then(user => $scope.user = user[0]);
 
-		$scope.toggleHang = function() {
+		$scope.toggleHang = function () {
 			$scope.user.hang = !$scope.user.hang;
 			console.log($scope.user.hang)
 			Users.updateUser($scope.user)
@@ -17,8 +17,15 @@ angular.module('hang.home', ['ngMaterial'])
 
 		$scope.getCurrentUser = Users.getCurrentUser;
 
-		$scope.toEvent = function() {
-			$location.path('/createEvent')
+		$scope.toEvent = function (ev) {
+			$mdDialog.show({
+					controller: 'EventController',
+					templateUrl: 'app/event/createEvent.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					clickOutsideToClose: true,
+					fullscreen: $scope.customFullscreen
+				});
 		}
 
 		$scope.changeUrl = function (ev) {
@@ -39,7 +46,7 @@ angular.module('hang.home', ['ngMaterial'])
 			});
 		}
 
-		$scope.userEventAdd = function() {
+		$scope.userEventAdd = function () {
 			this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
 			if (this.item.invited) {
 				$scope.eventGuests.push(this.item.email);
@@ -49,7 +56,7 @@ angular.module('hang.home', ['ngMaterial'])
 			console.log($scope.eventGuests);
 		}
 
-		$scope.signout = function() {
+		$scope.signout = function () {
 			Auth.signout();
 		}
 

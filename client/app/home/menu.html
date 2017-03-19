@@ -2,9 +2,14 @@
   <md-menu>
     <md-button class="settings" ng-click="$mdMenu.open($event)">
       <!--<img id="homeAvatar" src={{user.profile_url}}> -->
-      Settings
+      Menu
     </md-button>
     <md-menu-content width="3">
+      <md-menu-item>
+        <md-button ng-click="signout()">
+          Events
+        </md-button>
+      </md-menu-item>
       <md-menu-item md-menu-origin md-menu-align-target>
         <md-button ng-click="changeUrl($event)">
           Change Profile URL

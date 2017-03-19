@@ -1,10 +1,8 @@
 angular.module('hang.event', [])
 
 .controller('EventController', function($scope, $location, Auth, Users, Events) {
-	$scope.text = 'hi'
-
-	$scope.goHome = function() {
-		$location.path('/home');
+	$scope.createEvent = function() {
+		console.log($scope.events)
 	};
 
 	Users.getCurrentUser()

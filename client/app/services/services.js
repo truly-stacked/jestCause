@@ -89,6 +89,21 @@ angular.module('hang.services', [])
 	})
 
 	.factory('Events', function($http, $location, $window) {
+		var postEvents = function(info) {
+			return $http({
+				method: 'POST',
+				url: '/api/events',
+				headers: {
+					data: info
+				}
+			})
+			.then((resp) => {
+				console.log(resp)
+				return resp.data
+			});
+		}
+		
+	
 		var getEvents = function(user) {
 			console.log('calling getevents')
 			return $http({
@@ -104,7 +119,8 @@ angular.module('hang.services', [])
 			});
 		}
 		return {
-			getEvents
+			getEvents,
+			postEvents
 		}
 	});
 

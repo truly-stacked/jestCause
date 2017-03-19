@@ -29,7 +29,6 @@ angular.module('hang.auth', [])
 					console.error(error);
 				});
 		};
-
-		console.log($scope)
+		
 
 	});
