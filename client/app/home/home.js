@@ -1,78 +1,69 @@
 angular.module('hang.home', [])
 
-.controller('HomeController', function($scope, Users, $mdPanel, $location) {
+	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth) {
 
-$scope.eventGuests = [];
-$scope.currentNavItem="hang";
+		$scope.eventGuests = [];
+		$scope.currentNavItem = "hang";
 
-Users.getCurrentUser()
-.then(user => $scope.user = user[0]);
+		Users.getCurrentUser()
+			.then(user => $scope.user = user[0]);
 
-$scope.toggleHang = function() {
-	$scope.user.hang = !$scope.user.hang;
-	console.log($scope.user.hang)
-	Users.updateUser($scope.user)
-	.then(resp => console.log('updated ', resp))
-}
+		$scope.toggleHang = function () {
+			$scope.user.hang = !$scope.user.hang;
+			console.log($scope.user.hang)
+			Users.updateUser($scope.user)
+				.then(resp => console.log('updated ', resp))
+		}
 
-$scope.getCurrentUser = Users.getCurrentUser;
+		$scope.getCurrentUser = Users.getCurrentUser;
 
-$scope.toEvent = function() {
-	$location.path('/createEvent')
-}
+		$scope.toEvent = function (ev) {
+			$mdDialog.show({
+					controller: 'EventController',
+					templateUrl: 'app/event/createEvent.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					clickOutsideToClose: true,
+					fullscreen: $scope.customFullscreen
+				});
+		}
 
-$scope.showMenu = function($event) {
-	var panelPosition = $mdPanel.newPanelPosition()
-	.absolute()
-	.top('50%')
-	.left('50%');
+		$scope.eventlist = function () {
+			$location.path('/home')
+		}
 
-	var panelAnimation = $mdPanel.newPanelAnimation()
-		.duration({
-			open: 250,
-			close: 250
-		})
-		// .targetEvent($event)
-		// .defaultAnimation('md-panel-animate-fly')
-		// .closeTo('.show-button');
+		$scope.changeUrl = function (ev) {
+			var confirm = $mdDialog.prompt()
+				.title('enter new profile picture url')
+				.placeholder('url link')
+				.ariaLabel('url link')
+				.targetEvent(ev)
+				.ok('Confirm!')
+				.cancel('Cancel');
 
-	var config = {
-      attachTo: angular.element(document.body),
-      controller: 'HomeController',
-      position: panelPosition,
-      animation: panelAnimation,
-      targetEvent: $event,
-      templateUrl: '/app/home/settingsMenu.html',
-      clickOutsideToClose: true,
-      escapeToClose: true,
-      focusOnOpen: true		
-	};
-		$mdPanel.open(config)
-		.then(result => {
-			console.log(result)
-			result.show()
-			.then(function(showing) {
-				console.log(showing)
-			})
-		});
-}
+			$mdDialog.show(confirm).then((result) => {
+				Users.updateUser({
+						email: $scope.user.email,
+						profile_url: result
+					})
+					.then($route.reload())
+			});
+		}
 
-$scope.userEventAdd = function() {
-	this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
-	if (this.item.invited) {
-	$scope.eventGuests.push(this.item.email);		
-	} else {
-		$scope.eventGuests.splice($scope.eventGuests.indexOf(this.item.email),1)
-	} 	
-	console.log($scope.eventGuests);
-}
+		$scope.userEventAdd = function () {
+			this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
+			if (this.item.invited) {
+				$scope.eventGuests.push(this.item.email);
+			} else {
+				$scope.eventGuests.splice($scope.eventGuests.indexOf(this.item.email), 1)
+			}
+			console.log($scope.eventGuests);
+		}
 
+		$scope.signout = function () {
+			Auth.signout();
+		}
 
-
-
-
-Users.getUsers()
-.then(users => $scope.users = users);
-
-
-})
+		Users.getUsers()
+			.then(users => $scope.users = users);
+	})

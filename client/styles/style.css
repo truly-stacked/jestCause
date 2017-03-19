@@ -21,3 +21,7 @@ h1 {
 .userInvited {
 	color: tomato;
 }
+
+.settings {
+	top: 5px;
+}
