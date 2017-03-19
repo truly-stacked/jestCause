@@ -30,5 +30,8 @@ angular.module('hang.auth', [])
 				});
 		};
 		
+		$scope.signuplink = function () {
+			$location.path('/signup')
+		};
 
 	});
