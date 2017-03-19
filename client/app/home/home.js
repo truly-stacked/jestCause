@@ -28,6 +28,10 @@ angular.module('hang.home', [])
 				});
 		}
 
+		$scope.eventlist = function () {
+			$location.path('/home')
+		}
+
 		$scope.changeUrl = function (ev) {
 			var confirm = $mdDialog.prompt()
 				.title('enter new profile picture url')
