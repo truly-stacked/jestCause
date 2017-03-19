@@ -30,7 +30,6 @@ angular.module('hang.auth', [])
 				});
 		};
 
-		$scope.signout = function () {
-			Auth.signout();
-		}
+		console.log($scope)
+
 	});
