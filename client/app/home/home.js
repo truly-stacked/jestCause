@@ -1,10 +1,11 @@
 angular.module('hang.home', [])
 	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth, Events) {
 
-		$scope.eventGuests = [];
 		$scope.currentNavItem = "hang";
 		$scope.getCurrentUser = Users.getCurrentUser;
-		$scope.guests = $scope.eventGuests.toString();
+		$scope.event = {};
+
+		Events.getGuestList(guests => $scope.guests = guests.toString());
 
 		Users.getCurrentUser()
 			.then(user => {
@@ -14,29 +15,33 @@ angular.module('hang.home', [])
 					console.log('events! ', events)
 					$scope.events = events;
 					Events.getHostedEvents($scope.user)
-					.then(hostedEvents => $scope.hostedEvents = hostedEvents);
+					.then(hostedEvents => {
+						$scope.hostedEvents = hostedEvents
+					})
+					.then(function() {
+						Events.getGuestList(guests => $scope.eventGuests = guests)
+					});
 				})
 			});
 
-		$scope.getGuests = function() {
-			console.log('getting guests')
-			$scope.guests = $scope.eventGuests.toString();
-		}	
-
 		$scope.createEventClick = function($event) {
-			$scope.guests = $scope.eventGuests.toString();
+			Events.saveGuestList($scope.eventGuests);
 			$scope.toEvent($event)
 		}
 
 		$scope.createEvent = function() {
-			Events.postEvent({
+			console.log('creating event: ', $scope.event, ' guests: ', $scope.guests)
+			Events.createEvent({
 				email: $scope.user.email,
-				where: $scope.where,
-				when: $scope.when,
-				description: $scope.description,
+				where: $scope.event.where,
+				when: $scope.event.when,
+				description: $scope.event.description,
 				guests: $scope.guests
 			})
-			.then(resp => console.log('created!'))
+			.then(resp => {
+				console.log('created!')
+				$location.path('/home');
+			});
 		}
 
 		$scope.toggleHang = function () {
