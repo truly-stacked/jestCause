@@ -40,7 +40,7 @@ angular.module('hang.home', [])
 			})
 			.then(resp => {
 				console.log('created!')
-				$scope.eventGuests = [];
+				// $scope.eventGuests = [];
 				$location.path('/home');
 			});
 		}
