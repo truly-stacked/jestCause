@@ -92,22 +92,8 @@ angular.module('hang.services', [])
 	})
 
 	.factory('Events', function($http, $location, $window) {
-
-		var postEvent = function(info) {
-			return $http({
-				method: 'POST',
-				url: '/api/events',
-				headers: {
-					data: info
-				}
-			})
-			.then((resp) => {
-				console.log(resp)
-				return resp.data
-			});
-		}
+		var guestList = [];
 		
-	
 		var getEvents = function(user) {
 			return $http({
 				method: 'GET',
@@ -134,6 +120,7 @@ angular.module('hang.services', [])
 		};
 
 		var createEvent = function(event) {
+			console.log('inside services with event: ', event)
 			return $http({
 				method: 'POST',
 				url: '/api/events',
@@ -150,10 +137,20 @@ angular.module('hang.services', [])
 				return resp;
 			});
 		}
+
+		var saveGuestList = function(guests) {
+			guestList = guests;
+		};
+
+		var getGuestList = function(callback) {
+			callback(guestList);
+		}
 		return {
 			getEvents,
-			postEvent,
-			getHostedEvents
+			createEvent,
+			getHostedEvents,
+			saveGuestList,
+			getGuestList
 		}
 	});
 
