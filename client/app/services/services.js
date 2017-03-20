@@ -45,7 +45,7 @@ angular.module('hang.services', [])
 		var currentUser;
 
 		var getUsers = function() {
-			console.log('getting called')
+			console.log('get users getting called')
 			return $http({
 				method: 'GET',
 				url: '/api/users/'
@@ -77,7 +77,10 @@ angular.module('hang.services', [])
 				method: 'GET',
 				url: '/api/currentUser',
 			})
-			.then(user => user.data);
+			.then(user => {
+				console.log('user: ', user);
+				return user.data;
+			});
 		}
 
 		return {
