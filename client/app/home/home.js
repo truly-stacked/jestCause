@@ -2,13 +2,15 @@ angular.module('hang.home', [])
 	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth, Events) {
 
 		$scope.currentNavItem = "hang";
-		$scope.getCurrentUser = Users.getCurrentUser;
+		// $scope.getCurrentUser = Users.getCurrentUser;
 		$scope.event = {};
+		$scope.eventGuests = [];
 
 		Events.getGuestList(guests => $scope.guests = guests.toString());
 
 		Users.getCurrentUser()
 			.then(user => {
+				console.log('get current user called!', user)
 				$scope.user = user[0];
 				Events.getEvents($scope.user)
 				.then(events => {
@@ -19,10 +21,16 @@ angular.module('hang.home', [])
 						$scope.hostedEvents = hostedEvents
 					})
 					.then(function() {
-						Events.getGuestList(guests => $scope.eventGuests = guests)
+						Events.getGuestList(guests => {
+							console.log('guests! ', guests)
+							$scope.eventGuests = guests;
+						});
 					});
 				})
 			});
+
+		Users.getUsers()
+		.then(users => $scope.users = users);	
 
 		$scope.createEventClick = function($event) {
 			Events.saveGuestList($scope.eventGuests);
@@ -41,7 +49,10 @@ angular.module('hang.home', [])
 			.then(resp => {
 				console.log('created!')
 				Events.saveGuestList([]);
-				$location.path('/home');
+				$location.path('/events');
+				Events.getGuestList(guestList => { 
+					$scope.eventGuests = guestList;					
+				});
 			});
 		}
 
@@ -90,21 +101,33 @@ angular.module('hang.home', [])
 		}
 
 		$scope.userEventAdd = function () {
-			this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
-			if (this.item.invited) {
+			console.log('click! ', this)
+			// this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
+			if (!$scope.userIsGuest(this.item.email)) {
 				$scope.eventGuests.push(this.item.email);
+				this.item.invited = true;
 			} else {
 				$scope.eventGuests.splice($scope.eventGuests.indexOf(this.item.email), 1)
+				this.item.invited = false;
 			}
 			console.log($scope.eventGuests);
+		};
+
+		$scope.userIsGuest = function(guest) {
+			return $scope.eventGuests.indexOf(guest) > -1;
 		}
 
 		$scope.signout = function () {
 			Auth.signout();
 		}
 
-		Users.getUsers()
-			.then(users => $scope.users = users);
+		$scope.closeDialog = function(ev) {
+			$mdDialog.hide();
+			console.log('guests after submit ', $scope.eventGuests)
+			$scope.eventGuests = [];
+		}
+
+
 	})
 
 
