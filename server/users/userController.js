@@ -75,7 +75,11 @@ module.exports = {
     	console.log(' a token: ', token)
       var user = jwt.decode(token, 'secret');
       console.log('heres the current jwt: ', user)
-      res.json(user);
+      db.select().from('users').where('email', user[0].email)
+    	.then(user => {
+    		console.log(user);
+    		res.json(user);
+    	});
     }
   }
 }

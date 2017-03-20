@@ -139,6 +139,7 @@ angular.module('hang.services', [])
 		}
 
 		var saveGuestList = function(guests) {
+			console.log('running save guests: ', guests)
 			guestList = guests;
 		};
 
