@@ -1,7 +1,7 @@
 <div ng-cloak>
 	<md-content class="md-padding">
 		<md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
-			<md-button ng-click="toEvent($event)" name="createEvent">
+			<md-button ng-click="createEventClick($event)" name="createEvent">
 				Create Event
 			</md-button>
 			<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
@@ -11,12 +11,12 @@
 		</md-toolbar>
 	</md-content>
 </div>
-<div class="home" ng-cloak layout="column" layout-align="center center">
+<div style="margin-top: 50px" class="home" ng-cloak layout="column" layout-align="center center">
 	<div flex-gt-sm="50" flex>
 		<md-content flex layout-align="center center" class="md-padding">
 			<md-toolbar layout="row" class="md-hue-4">
 				<div class="md-toolbar-tools">
-					<span ng-click="getCurrentUser()" style="text-align: center">Users</span>
+					<span style="text-align: center">Users</span>
 				</div>
 			</md-toolbar>
 			<md-list flex>

@@ -1,19 +1,15 @@
 <div ng-cloak>
 	<md-content class="md-padding">
-		<md-toolbar layout-align="space-between"
-		md-selected-nav-item="currentNavItem"
-    nav-bar-aria-label="navigation links" layout="row">
-		<md-button ng-click="goHome()" name="createEvent">
-		Back
-		</md-button>
-		<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
-		Hang
-		</md-button>
-		<md-button class ="md-primary md-raised" class="settings" ng-click="showMenu($event)">
-		<img id="homeAvatar" src={{user.profile_url}}>
-		</md-button>
-	</md-toolbar>
-</md-content>
+		<md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
+			<md-button ng-click="toEvent($event)" name="createEvent">
+				Create Event
+			</md-button>
+			<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+				Hang
+			</md-button>
+			<div ng-include="'app/event/eventMenu.html'"></div>
+		</md-toolbar>
+	</md-content>
 </div>
 
 <div class="home" ng-cloak layout="column" layout-align="center center">	
@@ -22,14 +18,16 @@
 	<md-content flex layout-align="center center" class="md-padding">		
 		<md-toolbar layout="row" class="md-hue-4">
 			<div class="md-toolbar-tools">
-				<span style="text-align: center">Users</span>
+				<span style="text-align: center">Events</span>
 			</div>
 		</md-toolbar>
-			<md-list flex>
-				<md-list-item layout="row" ng-repeat="item in events" ng-click="null">
-					<img ng-class="{'hang': item.hang}" ng-src={{item.profile_url}} class="md-avatar">
-					<div class="md-list-item-text">
-					<h3>{{item.description}}</h3>
+			<md-list class="md-dense">
+				<md-list-item layout="column" flex ng-repeat="item in events" ng-click="null">
+					<img ng-src={{item.profile_url}} class="md-avatar">
+					<div flex layout="column" layout-align="start start" class="md-list-item-text">
+					<h3>{{item.where}}</h3>
+					<h3>{{item.when}}</h3>
+					<h6>{{item.description}}</h3>
 					</div>
 			</md-list-item>
 			</md-list>

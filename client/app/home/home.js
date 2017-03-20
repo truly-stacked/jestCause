@@ -1,11 +1,43 @@
 angular.module('hang.home', [])
-	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth) {
+	.controller('HomeController', function ($scope, Users, $mdPanel, $location, $mdDialog, $route, Auth, Events) {
 
 		$scope.eventGuests = [];
 		$scope.currentNavItem = "hang";
+		$scope.getCurrentUser = Users.getCurrentUser;
+		$scope.guests = $scope.eventGuests.toString();
 
 		Users.getCurrentUser()
-			.then(user => $scope.user = user[0]);
+			.then(user => {
+				$scope.user = user[0];
+				Events.getEvents($scope.user)
+				.then(events => {
+					console.log('events! ', events)
+					$scope.events = events;
+					Events.getHostedEvents($scope.user)
+					.then(hostedEvents => $scope.hostedEvents = hostedEvents);
+				})
+			});
+
+		$scope.getGuests = function() {
+			console.log('getting guests')
+			$scope.guests = $scope.eventGuests.toString();
+		}	
+
+		$scope.createEventClick = function($event) {
+			$scope.guests = $scope.eventGuests.toString();
+			$scope.toEvent($event)
+		}
+
+		$scope.createEvent = function() {
+			Events.postEvent({
+				email: $scope.user.email,
+				where: $scope.where,
+				when: $scope.when,
+				description: $scope.description,
+				guests: $scope.guests
+			})
+			.then(resp => console.log('created!'))
+		}
 
 		$scope.toggleHang = function () {
 			$scope.user.hang = !$scope.user.hang;
@@ -14,11 +46,13 @@ angular.module('hang.home', [])
 				.then(resp => console.log('updated ', resp))
 		}
 
-		$scope.getCurrentUser = Users.getCurrentUser;
+		$scope.toHome = function() {
+			$location.path('/home');
+		}
 
 		$scope.toEvent = function (ev) {
 			$mdDialog.show({
-					controller: 'EventController',
+					controller: 'HomeController',
 					templateUrl: 'app/event/createEvent.html',
 					parent: angular.element(document.body),
 					targetEvent: ev,
@@ -27,8 +61,8 @@ angular.module('hang.home', [])
 				});
 		}
 
-		$scope.eventlist = function () {
-			$location.path('/home')
+		$scope.eventList = function () {
+			$location.path('/events');
 		}
 
 		$scope.changeUrl = function (ev) {
@@ -66,4 +100,6 @@ angular.module('hang.home', [])
 		Users.getUsers()
 			.then(users => $scope.users = users);
 	})
+
+
 

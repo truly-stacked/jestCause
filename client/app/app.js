@@ -23,6 +23,10 @@ angular.module('hang', [
 			templateUrl: 'app/event/createEvent.html',
 			controller: 'HomeController'
 		})
+		.when('/events', {
+			templateUrl: 'app/event/events.html',
+			controller: 'HomeController'
+		})
 		.otherwise({
 			redirectTo: '/signin'
 		});
