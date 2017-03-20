@@ -20,7 +20,7 @@
 				</div>
 			</md-toolbar>
 			<md-list flex>
-				<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': this.item.invited}">
+				<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': userIsGuest(this.item.email)}">
 					<img ng-class="{'hang': item.hang}" ng-src={{item.profile_url}} class="md-avatar">
 					<div class="md-list-item-text">
 						<h3>{{item.email}}</h3>
