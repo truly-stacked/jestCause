@@ -38,6 +38,5 @@ jspm_packages
 
 .DS_Store
 credentials
-
-
-
+build
+deploy
