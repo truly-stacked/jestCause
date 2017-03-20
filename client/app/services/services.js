@@ -89,7 +89,8 @@ angular.module('hang.services', [])
 	})
 
 	.factory('Events', function($http, $location, $window) {
-		var postEvents = function(info) {
+
+		var postEvent = function(info) {
 			return $http({
 				method: 'POST',
 				url: '/api/events',
@@ -105,22 +106,51 @@ angular.module('hang.services', [])
 		
 	
 		var getEvents = function(user) {
-			console.log('calling getevents')
 			return $http({
 				method: 'GET',
 				url: '/api/events',
 				headers: {
-					email: user 
+					email: user.email 
 				}
 			})
 			.then(resp => {
 				console.log('inside get events ', resp);
 				return resp.data;
 			});
+		};
+
+		var getHostedEvents = function(user) {
+			return $http({
+				method: 'GET',
+				url: '/api/hostedEvents',
+				headers: {
+					email: user.email
+				}
+			})
+			.then(resp => resp.data)
+		};
+
+		var createEvent = function(event) {
+			return $http({
+				method: 'POST',
+				url: '/api/events',
+				data: {
+					email: event.email,
+					where: event.where,
+					when: event.when,
+					description: event.description,
+					guests: event.guests
+				}
+			})
+			.then(resp => {
+				console.log(resp)
+				return resp;
+			});
 		}
 		return {
 			getEvents,
-			postEvents
+			postEvent,
+			getHostedEvents
 		}
 	});
 
