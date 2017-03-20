@@ -24,16 +24,17 @@ angular.module('hang.home', [])
 						Events.getGuestList(guests => {
 							console.log('guests! ', guests)
 							$scope.eventGuests = guests;
+							Users.getUsers()
+							.then(users => {
+								users = users.filter(user => user.email !== $scope.user.email);
+								$scope.users = users;	
+							});						
 						});
 					});
 				})
 			});
 
-		Users.getUsers()
-		.then(users => {
-			users = users.filter(user => user.email !== $scope.user.email);
-			$scope.users = users;
-			});
+
 
 		$scope.createEventClick = function($event) {
 			Events.saveGuestList($scope.eventGuests);
