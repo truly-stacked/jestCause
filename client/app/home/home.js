@@ -30,7 +30,10 @@ angular.module('hang.home', [])
 			});
 
 		Users.getUsers()
-		.then(users => $scope.users = users);	
+		.then(users => {
+			users = users.filter(user => user.email !== $scope.user.email);
+			$scope.users = users;
+			});
 
 		$scope.createEventClick = function($event) {
 			Events.saveGuestList($scope.eventGuests);
