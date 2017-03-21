@@ -1,6 +1,6 @@
 var userController = require('../users/userController.js');
 var eventController = require('../events/eventController.js');
-let profileController = require('../events/profileController.js');
+let profileController = require('../profile/profileController.js');
 
 module.exports = function(app, express) {
 	app.post('/api/users/signin', userController.signin);
@@ -8,9 +8,9 @@ module.exports = function(app, express) {
 	app.get('/api/users', userController.getUsers);
 	app.put('/api/users', userController.updateUser);
 	app.get('/api/events', eventController.getEvents);
-	app.get('/api/profile', profileController.getProfile);
+	app.get('/api/profile');
 	app.get('/api/hostedEvents', eventController.getHostedEvents);
 	app.post('/api/events', eventController.createEvent);
 	app.get('/api/currentUser', userController.currentUser);
-}
+};
 
