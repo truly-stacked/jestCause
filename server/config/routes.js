@@ -7,7 +7,7 @@ module.exports = function(app, express) {
 	app.post('/api/users/signup', userController.signup);
 	app.get('/api/users', userController.getUsers);
 	app.put('/api/users', userController.updateUser);
-	app.get('api/allevents', eventController.getAllEvents);
+	app.get('/api/allevents', eventController.getAllEvents);
 	app.get('/api/events', eventController.getEvents);
 	app.get('/api/profile');
 	app.get('/api/hostedEvents', eventController.getHostedEvents);
