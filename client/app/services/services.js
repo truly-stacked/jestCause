@@ -169,4 +169,11 @@ angular.module('hang.services', [])
 			getGuestList,
 			getAllEvents
 		}
-	});
+	})
+	.factory('Insert', function($http, $location){
+		const current = {};
+		current.insertEvent = function(event){
+			current.currentEvent = event;
+		}
+		return current;
+	})
