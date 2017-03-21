@@ -20,6 +20,22 @@ module.exports = {
 		});
 	},
 
+	getAllEvents : function(req,res,next){
+		Event.getAllEvents(function(events){
+			if(events){
+				console.log("These are ALL OF THE POSSIBLE EVENTS ", events);
+				res.send(events);
+			} else{
+				next(new Error('this wasnt successful'));
+			}
+		})
+
+
+
+
+
+	},
+
 	getHostedEvents: function(req, res, next) {
 		Event.getHostedEvents(req.headers.email, function(events) {
 			if (events) {
