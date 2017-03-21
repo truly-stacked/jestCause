@@ -24,11 +24,11 @@
     </div>
     <div class="event-info">
       <div>
-        <span class="event-name">{{ mockEvent.description }}</span>
-        <span class="event-time pull-right">{{ mockEvent.when }}
+        <span class="event-name">{{ currentEvent.description }}</span>
+        <span class="event-time pull-right">{{ currentEvent.when }}
       </div>
-        <div class="event-venue">{{ mockEvent.venue }}</div>
-        <div class="event-address">{{ mockEvent.address }}</div>
+        <div class="event-venue">{{ currentEvent.venue }}</div>
+        <div class="event-address">{{ currentEvent.address }}</div>
     </div>
     <hr class="hr-style">
       <div class="attendees-container">
@@ -37,5 +37,6 @@
           <div class="user-name text-center">{{ user.name }}</div>
         </div>
     </div>
+		<pre>{{ currentEvent }}</pre>
   </div>
 </div>
