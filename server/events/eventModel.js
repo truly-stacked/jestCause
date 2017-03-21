@@ -8,7 +8,7 @@ module.exports = {
 			callback(events);
 		}).catch(err => console.error(err));
 
-		
+
 	},
 
 	getHostedEvents: function(user, callback) {
@@ -25,7 +25,8 @@ module.exports = {
 		db.select('id').from('users').where('email', event.email)
 		.then(function(host_id) {
 			db('events').insert({
-				where: event.where,
+				venue: event.venue,
+				address: event.address,
 				when: event.when,
 				description: event.description,
 				host_id: (db.select('id').from('users').where('email', event.email))
@@ -35,7 +36,7 @@ module.exports = {
 						user_id: (db.select('id').from('users').where('email', guest)),
 						event_id: inserted[0]
 					}).then(function(insertedUserEvents) {
-						console.log('inserted user_event');				
+						console.log('inserted user_event');
 					})
 				})
 				callback(inserted)
@@ -45,4 +46,3 @@ module.exports = {
 		});
 	}
 }
-
