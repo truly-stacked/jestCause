@@ -31,7 +31,7 @@ module.exports = {
 	},
 
 	createEvent: function(req, res, next) {
-		let {where, when, description, guests, email} = req.body;
+		let {venue, address, when, description, guests, email} = req.body;
 		console.log('whole request: ', req.body)
 		console.log('guests: ', guests)
 		console.log('here are the guests: ', guests)
@@ -40,7 +40,7 @@ module.exports = {
 		Event.createEvent(req.body, function(response) {
 			if (response) {
 				server.send({
-					text: (`Where: ${where}, When: ${when}, Description: ${description}, Who: ${guests}`),
+					text: (`Venue: ${venue}, Address: ${address}, When: ${when}, Description: ${description}, Who: ${guests}`),
 					from: gmail.user,
 					to: guests.toString(),
 					subject: 'Hang Invitation'
@@ -48,7 +48,7 @@ module.exports = {
 					console.log(err || message);
 				});
 				res.send(response);
-			} 
+			}
 			else {
 				next(new Error('problem saving event'));
 			}

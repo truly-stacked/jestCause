@@ -93,13 +93,13 @@ angular.module('hang.services', [])
 
 	.factory('Events', function($http, $location, $window) {
 		var guestList = [];
-		
+
 		var getEvents = function(user) {
 			return $http({
 				method: 'GET',
 				url: '/api/events',
 				headers: {
-					email: user.email 
+					email: user.email
 				}
 			})
 			.then(resp => {
@@ -126,7 +126,8 @@ angular.module('hang.services', [])
 				url: '/api/events',
 				data: {
 					email: event.email,
-					where: event.where,
+					venue: event.venue,
+					address: event.address,
 					when: event.when,
 					description: event.description,
 					guests: event.guests
@@ -154,6 +155,3 @@ angular.module('hang.services', [])
 			getGuestList
 		}
 	});
-
-
-

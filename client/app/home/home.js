@@ -27,8 +27,8 @@ angular.module('hang.home', [])
 							Users.getUsers()
 							.then(users => {
 								users = users.filter(user => user.email !== $scope.user.email);
-								$scope.users = users;	
-							});						
+								$scope.users = users;
+							});
 						});
 					});
 				})
@@ -45,7 +45,8 @@ angular.module('hang.home', [])
 			console.log('creating event: ', $scope.event, ' guests: ', $scope.guests)
 			Events.createEvent({
 				email: $scope.user.email,
-				where: $scope.event.where,
+				venue: $scope.event.venue,
+				address: $scope.event.address,
 				when: $scope.event.when,
 				description: $scope.event.description,
 				guests: $scope.guests
@@ -54,8 +55,8 @@ angular.module('hang.home', [])
 				console.log('created!')
 				Events.saveGuestList([]);
 				$location.path('/events');
-				Events.getGuestList(guestList => { 
-					$scope.eventGuests = guestList;					
+				Events.getGuestList(guestList => {
+					$scope.eventGuests = guestList;
 				});
 			});
 		}
@@ -133,6 +134,3 @@ angular.module('hang.home', [])
 
 
 	})
-
-
-
