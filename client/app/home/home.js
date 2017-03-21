@@ -1,6 +1,19 @@
 angular.module('hang.home', [])
 	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, $location, $mdDialog, $route, Auth, Events) {
 
+		$scope.getAll = function(){
+			Events.getAllEvents()
+			.then(events => $scope.allEvents = events)
+		};
+
+		$scope.getAll();
+
+		$scope.openEvent = function(event){
+			$scope.currentEvent = event;
+			$location.path("/eventpage");
+		}
+
+
 		$scope.mockEvent = {
 			description: 'After Hours',
 			venue: 'Hack Reactor',

@@ -30,3 +30,7 @@
 		</md-content>
 	</div>
 </div>
+<div class='event-list-item' ng-click='openEvent(event)'  ng-repeat='event in allEvents'>
+	<div>{{event.description}}</div>
+	<div>{{event.venue}}</div>
+</div>

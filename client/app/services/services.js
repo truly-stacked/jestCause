@@ -94,6 +94,20 @@ angular.module('hang.services', [])
 	.factory('Events', function($http, $location, $window) {
 		var guestList = [];
 
+		var getAllEvents = function(){
+			return $http({
+				method: 'GET',
+				url: '/api/allevents'
+			})
+			.then(resp =>{
+				console.log("GRABBED ALL OF THE EVENTS");
+				return resp.data;
+			})
+			.catch(err => {
+				console.log("There was a error")
+			})
+		};
+
 		var getEvents = function(user) {
 			return $http({
 				method: 'GET',
@@ -152,6 +166,7 @@ angular.module('hang.services', [])
 			createEvent,
 			getHostedEvents,
 			saveGuestList,
-			getGuestList
+			getGuestList,
+			getAllEvents
 		}
 	});
