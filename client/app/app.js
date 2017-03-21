@@ -3,6 +3,7 @@ angular.module('hang', [
 	'hang.home',
 	'hang.services',
 	'ngMaterial',
+	'hang.profile',
 	'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider, $locationProvider){
@@ -30,6 +31,10 @@ angular.module('hang', [
 		.when('/eventpage', {
 			templateUrl: 'app/eventpage/eventpage.html',
 			controller: 'HomeController'
+		})
+		.when('/profile', {
+			templateUrl: 'app/profile/profile.html',
+			controller: 'ProfileController'
 		})
 		.otherwise({
 			redirectTo: '/signin'
