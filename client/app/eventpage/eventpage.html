@@ -1,4 +1,41 @@
+<div ng-cloak>
+	<md-content class="md-padding">
+		<md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
+			<md-button ng-click="toHome()" name="goHome">
+				Home
+			</md-button>
+			<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+				Hang
+			</md-button>
+			<div ng-include="'app/event/eventMenu.html'"></div>
+		</md-toolbar>
+	</md-content>
+</div>
+
 <div class="page-container">
   <div class="event-container">
+    <div class="map">
+      <iframe
+        width="100%"
+        height="350"
+        frameborder="0" style="border:0"
+        ng-src="{{mapUrl}}" allowfullscreen>
+      </iframe>
+    </div>
+    <div class="event-info">
+      <div>
+        <span class="event-name">{{ mockEvent.description }}</span>
+        <span class="event-time pull-right">{{ mockEvent.when }}
+      </div>
+        <div class="event-venue">{{ mockEvent.venue }}</div>
+        <div class="event-address">{{ mockEvent.address }}</div>
+    </div>
+    <hr class="hr-style">
+      <div class="attendees-container">
+        <div class="attendee" ng-repeat="user in mockUsers">
+          <img class="user-photo img-circle" ng-click="" src= {{user.profile_url}}>
+          <div class="user-name text-center">{{ user.name }}</div>
+        </div>
+    </div>
   </div>
 </div>
