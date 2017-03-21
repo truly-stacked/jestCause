@@ -27,13 +27,17 @@ angular.module('hang', [
 			templateUrl: 'app/event/events.html',
 			controller: 'HomeController'
 		})
+		.when('/eventpage', {
+			templateUrl: 'app/eventpage/eventpage.html',
+			controller: 'HomeController'
+		})
 		.otherwise({
 			redirectTo: '/signin'
 		});
 
 		$locationProvider.hashPrefix('');
 		$httpProvider.interceptors.push('AttachTokens');
-	})	
+	})
 
 
 	.factory('AttachTokens', function ($window) {
