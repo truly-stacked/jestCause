@@ -66,3 +66,4 @@ angular.module('hang', [
 		});
 
 	})
+	
