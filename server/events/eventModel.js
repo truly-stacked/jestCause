@@ -1,6 +1,16 @@
 var db = require('../config/config.js');
 
 module.exports = {
+
+	getAllEvents: function(callback){
+		db.select().from('events')
+		.then(function(events){
+			callback(events)
+		}).catch( err => console.error(err))
+	},
+
+
+
 	getEvents: function(user, callback) {
 		db.select().from('events').innerJoin('user_events', 'events.id', 'user_events.event_id').innerJoin('users', 'users.id', 'events.host_id')
 		.where('user_events.user_id', db.select('id').from('users').where('email', user))
