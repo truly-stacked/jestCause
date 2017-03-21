@@ -18,6 +18,14 @@
 				<div class="md-toolbar-tools">
 					<span style="text-align: center">PROFILE VIEW</span>
 				</div>
+
+
+				<form ng-submit="twitterAnalyse()">
+				  <input type="text" ng-model="searchRequestInput" placeholder="e.g., Journey4John" required style="height:30px; width: 300px;">
+                  <input type="Submit" style="color: brown">
+                </form>
+
+
 			</md-toolbar>
 			<md-list flex>
 				<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': userIsGuest(this.item.email)}">
