@@ -1,6 +1,10 @@
 angular.module('hang.home', [])
 	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, $location, $mdDialog, $route, Auth, Insert, Events) {
 
+		$scope.goHome = function() {
+			$location.path('/home');
+		}
+
 		$scope.getAll = function(){
 			Events.getAllEvents()
 			.then(events => $scope.allEvents = events)
