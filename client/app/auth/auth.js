@@ -4,7 +4,6 @@ angular.module('hang.auth', [])
 		$scope.user = {};
 		$scope.data;
 
-
 		$scope.signin = function () {
 			Auth.signin($scope.user)
 				.then(function (token) {
@@ -29,7 +28,7 @@ angular.module('hang.auth', [])
 					console.error(error);
 				});
 		};
-		
+
 		$scope.signuplink = function () {
 			$location.path('/signup')
 		};
