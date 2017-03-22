@@ -11,8 +11,11 @@ angular.module('hang.profile', [])
 		})
 		.then(function(results){
 			$scope.userData = results.data;
+			// tone.grabValues(results.data.watsonResults);
+			// $scope.averageValues = tone.averageValues;
+			// render.renderData($scope.averageValues);
 			console.log('---->RESULTS: ', results);
 			$scope.spinner = false;
 		});
-     }
+     };
 });
