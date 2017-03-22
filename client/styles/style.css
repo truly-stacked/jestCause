@@ -2,8 +2,27 @@
 	font-weight: bold;
 	color: tomato;
 }*/
+.home-container {
+	display: flex;
+	flex-direction: row;
+}
 
+.event-card{
+	width: 200px;
+	height: 200px;
+	margin-bottom: 1%;
+}
 
+.card-image {
+	height: 100px;
+	width: 100px;
+}
+.card-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 74%;
+}
 #test {
 	min-height: 200px;
 	min-width: 200px;
@@ -23,6 +42,9 @@
 	color: tomato;
 }
 
+.user-table {
+	width: 24%;
+}
 .settings {
 	top: 5px;
 }

@@ -14,26 +14,36 @@
 		</md-toolbar>
 	</md-content>
 </div>
-<div style="margin-top: 20px" class="home" ng-cloak layout="column" layout-align="start end">
-	<div flex-gt-sm="50" flex>
-		<md-content flex layout-align="start end" class="md-padding">
-			<md-toolbar layout="row" class="md-hue-4">
-				<div class="md-toolbar-tools">
-					<span style="text-align: center">Users</span>
-				</div>
-			</md-toolbar>
-			<md-list flex>
-				<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': userIsGuest(this.item.email)}">
-					<img ng-class="{'hang': item.hang}" ng-src={{item.profile_url}} class="md-avatar">
-					<div class="md-list-item-text">
-						<h3>{{item.email}}</h3>
-					</div>
-				</md-list-item>
-			</md-list>
-		</md-content>
+
+
+
+<div class="home-container">
+	<div class="card-container">
+		<div ng-click='openEvent(event)' ng-repeat='event in allEvents'>
+				<md-card class= 'event-card'>
+					 <md-card-content class="card">
+						 <img src="http://placehold.it/100x100" class="card-image img-circle" alt="user avatar">
+						 <h6>{{event.description}}</h6>
+						 <h6>{{event.venue}}</h6>
+						 <h6>{{event.when}}</h6>
+					</md-card-content>
+				</md-card>
+			</div>
 	</div>
-</div>
-<div class='event-list-item' ng-click='openEvent(event)'  ng-repeat='event in allEvents'>
-	<div>{{event.description}}</div>
-	<div>{{event.venue}}</div>
+
+	<md-content flex class="md-padding user-table pull-right">
+		<md-toolbar layout="row" class="md-hue-4">
+			<div class="md-toolbar-tools">
+				<span style="text-align: center">Users</span>
+			</div>
+		</md-toolbar>
+		<md-list flex>
+			<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': userIsGuest(this.item.email)}">
+				<img ng-class="{'hang': item.hang}" ng-src={{item.profile_url}} class="md-avatar">
+				<div class="md-list-item-text">
+					<h3>{{item.email}}</h3>
+				</div>
+			</md-list-item>
+		</md-list>
+	</md-content>
 </div>
