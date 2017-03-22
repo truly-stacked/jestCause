@@ -1,5 +1,5 @@
 angular.module('hang.home', [])
-	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, $location, $mdDialog, $route, Auth, Events) {
+	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, $location, $mdDialog, $route, Auth, Insert, Events) {
 
 		$scope.getAll = function(){
 			Events.getAllEvents()
@@ -9,9 +9,7 @@ angular.module('hang.home', [])
 		$scope.getAll();
 
 		$scope.openEvent = function(event){
-			console.log("EVENT: ", event);
-			$scope.currentEvent = event;
-			console.log("SCOPE.CURRENTEVENT: ", $scope.currentEvent);
+			Insert.insertEvent(event)
 			$location.path("/eventpage");
 		}
 
