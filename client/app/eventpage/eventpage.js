@@ -6,8 +6,16 @@ angular.module('hang.eventpage', [])
   		// 	address: '369 Lexington Ave NY, NY',
   		// 	when: '7:00 PM'
   		// }
+      $scope.getAttendees = function(eventID) {
+        Events.getAttendees(eventID)
+          .then(function(userIDs) {
+            console.log('Here are the userIDs returned from /attendees: ',userIDs);
+            $scope.userIDs = userIDs;
+          })
+      }
       $scope.currentEvent = Insert.currentEvent;
       console.log("HERE IS THE CURRENT EVENT IN EVENTPAGE: ", $scope.currentEvent)
+      $scope.getAttendees($scope.currentEvent.id);
   		$scope.mockUsers = [
   			{
   				name: 'JP',

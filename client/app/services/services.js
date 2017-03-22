@@ -90,6 +90,19 @@ angular.module('hang.services', [])
 	.factory('Events', function($http, $location, $window) {
 		var guestList = [];
 
+		var getAttendees = function(eventID) {
+			return $http({
+				method: 'GET',
+				url: '/api/attendees',
+				headers: {
+					id: eventID
+				}
+			})
+			.then(function(resp) {
+				return resp.data;
+			})
+		};
+
 		var getAllEvents = function(){
 			return $http({
 				method: 'GET',
@@ -158,7 +171,8 @@ angular.module('hang.services', [])
 			getHostedEvents,
 			saveGuestList,
 			getGuestList,
-			getAllEvents
+			getAllEvents,
+			getAttendees
 		}
 	})
 	.factory('Insert', function($http, $location){
