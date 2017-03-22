@@ -19,7 +19,7 @@ angular.module('hang.render',[])
    	  yColumn = "name";
    	 
    	let innerWidth = outerWidth - margin.left - margin.right, 
-   	  innderHeight = outerHieght - margin.top - margin.bottom;   
+   	  innerHeight = outerHeight - margin.top - margin.bottom;   
 
    	let svg = d3.select("#d3Display").append("svg")
    	  .attr("class", "d3SVG")
@@ -43,14 +43,14 @@ angular.module('hang.render',[])
       colors = d3.scale.category20();
 
     let xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-      .tick(10)
-      .tickFormat(function(d) {
-      	if (d != 100){
-      		return (d * 100).toString().slice(0,2) + "%";
-      	} else {
-      		return ("100%");
-      	}
-      })
+      //.tick(10)
+      // .tickFormat(function(d) {
+      // 	if (d != 100){
+      // 		return (d * 100).toString().slice(0,2) + "%";
+      // 	} else {
+      // 		return ("100%");
+      // 	}
+      // })
       .outerTickSize(0);
 
     let yAxis = d3.svg.axis().scale(yScale).orient("left")
