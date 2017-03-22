@@ -43,14 +43,6 @@ angular.module('hang.render',[])
       colors = d3.scale.category20();
 
     let xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-      //.tick(10)
-      // .tickFormat(function(d) {
-      // 	if (d != 100){
-      // 		return (d * 100).toString().slice(0,2) + "%";
-      // 	} else {
-      // 		return ("100%");
-      // 	}
-      // })
       .outerTickSize(0);
 
     let yAxis = d3.svg.axis().scale(yScale).orient("left")
