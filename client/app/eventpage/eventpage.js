@@ -1,41 +1,37 @@
 angular.module('hang.eventpage', [])
-  .controller('eventPageCtrl', function($scope, $sce, $location, Insert, Events, UserInsert){
-  		// $scope.mockEvent = {
-  		// 	description: 'After Hours',
-  		// 	venue: 'Hack Reactor',
-  		// 	address: '369 Lexington Ave NY, NY',
-  		// 	when: '7:00 PM'
-  		// }
-      $scope.getAttendees = function(eventID) {
-        Events.getAttendees(eventID)
-          .then(function(users) {
-            $scope.attendees = users;
-          })
-      }
+  .controller('eventPageCtrl', function($scope, $sce, $location, Insert, Users, Events, UserInsert){
+    //EVENT AND HOST ASSIGNMENT================================================
+    $scope.currentEvent = Insert.currentEvent;
+    $scope.host_id = $scope.currentEvent.host_id;
 
-      $scope.openUser = function(user) {
-        console.log("firing openUser")
-        UserInsert.insert(user)
-        $location.path('/profile')
-      }
-      $scope.currentEvent = Insert.currentEvent;
-      console.log("HERE IS THE CURRENT EVENT IN EVENTPAGE: ", $scope.currentEvent)
-      $scope.getAttendees($scope.currentEvent.id);
-  		$scope.mockUsers = [
-  			{
-  				name: 'JP',
-  				profile_url: 'https://avatars3.githubusercontent.com/u/22504731?v=3&s=460'
-  			},
-  			{
-  				name: 'Mike',
-  				profile_url: 'http://michaeljchan.com/image/profile.PNG'
-  			},
-  			{
-  				name: 'Kyle',
-  				profile_url: 'https://avatars0.githubusercontent.com/u/25232894?v=3&s=460'
-  			}
-  		]
-  		$scope.escapedAddress = $scope.currentEvent.address.split(" ").join("%20");
-  		$scope.untrustedMapUrl = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs&q="+$scope.escapedAddress;
-  		$scope.mapUrl = $sce.trustAsResourceUrl($scope.untrustedMapUrl)
+    //ATTENDING LIST===========================================================
+    $scope.getAttendees = function(eventID) {
+      Events.getAttendees(eventID)
+      .then(function(users) {
+        $scope.attendees = users;
+        //line 11-16 adds the host to the attendees
+        Users.getUsers()
+        .then(function(users) {
+          users.forEach(function(user) {
+            if(user.id === $scope.host_id){
+              console.log("USER MATCHES HOST");
+              $scope.attendees.push(user);
+            }
+          })
+         })
+      })
+    }
+
+    $scope.getAttendees($scope.currentEvent.id);
+
+    //ATTENDEE CLICK===========================================================
+    $scope.openUser = function(user) {
+      UserInsert.insert(user)
+      $location.path('/profile')
+    }
+
+    //GOOGLE MAPS INTEGRATION==================================================
+		$scope.escapedAddress = $scope.currentEvent.address.split(" ").join("%20");
+		$scope.untrustedMapUrl = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs&q="+$scope.escapedAddress;
+		$scope.mapUrl = $sce.trustAsResourceUrl($scope.untrustedMapUrl)
 });
