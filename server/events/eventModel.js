@@ -2,6 +2,14 @@ var db = require('../config/config.js');
 
 module.exports = {
 
+	getAttendees: function(eventID, callback) {
+		db.select('user_id').from('user_events').where('event_id', eventID)
+		.then(function(userID){
+			console.log("This is what is returned from inner join table call ", userID)
+			callback(userID);
+		})
+	},
+
 	getAllEvents: function(callback){
 		db.select().from('events')
 		.then(function(events){

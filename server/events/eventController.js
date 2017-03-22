@@ -10,6 +10,16 @@ var server = email.server.connect({
 });
 
 module.exports = {
+	getAttendees: function(req, res, next){
+		Event.getAttendees(req.headers.id, function(userID){
+			if(userID) {
+				res.send(userID)
+			} else {
+				next(new Error("Could not get attendees in controller"));
+			}
+		});
+	},
+
 	getEvents: function(req, res, next) {
 		Event.getEvents(req.headers.email, function(events) {
 			if (events) {
