@@ -2,7 +2,7 @@ angular.module ('hang.aster', [])
   .factory('aster', function () {
 
 
-    renderData = () => {
+    renderData = (dataToRender) => {
 
      var width = 500,
       height = 500,
@@ -23,7 +23,7 @@ angular.module ('hang.aster', [])
       var arc = d3.svg.arc()
         .innerRadius(innerRadius)
         .outerRadius(function (d) { 
-          return (radius - innerRadius) * (d.data.score / 100.0) + innerRadius; 
+          return (radius - innerRadius) * (d.data.score / 50.0) + innerRadius; 
         });
       
       var outlineArc = d3.svg.arc()
@@ -37,12 +37,21 @@ angular.module ('hang.aster', [])
           .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
       
       svg.call(tip);
- 
+      
+      let totalScore = dataToRender.Joy+dataToRender.Fear+dataToRender.Sadness+dataToRender.Disgust+dataToRender.Anger;
+      let delta = 0;
+
+      if (totalScore < 1){
+        delta = 1-totalScore;
+      };
+
       var data = [
-        {id:'FIS',order:1.1,score:59,weight:0.5,color:'#9E0041',label:'Anger'},
-        {id:'MAR',order:1.3,score:24,weight:0.5,color:'#C32F4B',label:'Happy'},
-        {id:'AO',order:2,score:98,weight:1,color:'#E1514B',label:'Joy'},
-        {id:'NP',order:3,score:60,weight:1,color:'#F47245',label:'Awesome'}
+        {id:'ANG',order:1,score:(dataToRender.Anger*100).toFixed(2),weight:1,color:'#9E0041',label:'Anger'},
+        {id:'DIS',order:2,score:(dataToRender.Disgust*100).toFixed(2),weight:1,color:'#C32F4B',label:'Disgust'},
+        {id:'FER',order:3,score:(dataToRender.Fear*100).toFixed(2),weight:1,color:'#E1514B',label:'Fear'},
+        {id:'SAD',order:4,score:(dataToRender.Sadness*100).toFixed(2),weight:1,color:'#F47245',label:'Sadness'},
+        {id:'JOY',order:5,score:(dataToRender.Joy*100).toFixed(2),weight:1,color:'#C7E89E',label:'Joy'},
+        {id:'VAR',order:6,score:(delta*100).toFixed(2),weight:1,color:'#FEC574',label:'Variance'}
       ]
 
       // d3.csv('./aster_data.csv', function(error, data) {
@@ -53,14 +62,13 @@ angular.module ('hang.aster', [])
           d.weight = +d.weight;
           d.color  =  d.color;
           d.label  =  d.label;
-          d.width  = +d.weight;
-          
+          d.width  = +d.weight;  
          });
 
 
         var path = svg.selectAll(".solidArc")
             .data(pie(data))
-          .enter().append("path")
+            .enter().append("path")
             .attr("fill", function(d) { return d.data.color; })
             .attr("class", "solidArc")
             .attr("stroke", "gray")
@@ -70,7 +78,7 @@ angular.module ('hang.aster', [])
 
         var outerPath = svg.selectAll(".outlineArc")
             .data(pie(data))
-          .enter().append("path")
+            .enter().append("path")
             .attr("fill", "none")
             .attr("stroke", "gray")
             .attr("class", "outlineArc")

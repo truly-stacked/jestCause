@@ -1,24 +1,18 @@
-<div ng-cloak>
-<!-- Navigation Bar -->
-	<md-content class="md-padding">
-		<md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
-			<md-button ng-click="createEventClick($event)" name="createEvent">
-				Create Event
-			</md-button>
-			<md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
-				Hang
-			</md-button>
-
-			    <form ng-submit="twitterAnalyse()">
-				  <input type="text" ng-model="searchRequestInput" placeholder="e.g., barackObama" class="search-field">
-                  <input type="Submit" style="color: brown">
-                </form>
-
-
-
-			<div ng-include="'app/home/menu.html'"></div>
-		</md-toolbar>
-	</md-content>
+<div ng-controller="HomeController" ng-cloak>
+  <md-content class="md-padding">
+    <md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
+      <md-button ng-click="goHome()" name="homeButton">
+        <i class="glyphicon glyphicon-home"></i>
+      </md-button>
+      <md-button ng-click="createEventClick($event)" name="createEvent">
+        Create Event
+      </md-button>
+      <md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+        Hang
+      </md-button>
+      <div ng-include="'app/home/menu.html'"></div>
+    </md-toolbar>
+  </md-content>
 </div>
 
 <!-- Content -->
@@ -31,7 +25,7 @@
 
 
 
-			<div> <img src="{{userData.imageUrl}}"></div>
+			<div> <img class="img-circle" src="{{user.profile_url}}"></div>
 			<div> {{userData.name}} </div>
 			<div> {{userData.followers}} </div>
 			<div> {{userData.friends}} </div>

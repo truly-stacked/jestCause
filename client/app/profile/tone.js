@@ -18,8 +18,6 @@ angular.module('hang.tone',[])
   	};
 
     let grabValues = function (data){
-    	console.log('IN TONE: data =', data);
-
     	for (var key in averageValues) {
     		averageValues[key] = data[key];
     	}
