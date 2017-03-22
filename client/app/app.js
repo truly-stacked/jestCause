@@ -4,6 +4,7 @@ angular.module('hang', [
 	'hang.services',
 	'ngMaterial',
 	'hang.profile',
+	'hang.eventpage',
 	'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider, $locationProvider){
@@ -30,7 +31,7 @@ angular.module('hang', [
 		})
 		.when('/eventpage', {
 			templateUrl: 'app/eventpage/eventpage.html',
-			controller: 'HomeController'
+			controller: 'eventPageCtrl'
 		})
 		.when('/profile', {
 			templateUrl: 'app/profile/profile.html',
@@ -66,4 +67,3 @@ angular.module('hang', [
 		});
 
 	})
-	

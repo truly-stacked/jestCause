@@ -174,6 +174,7 @@ angular.module('hang.services', [])
 		const current = {};
 		current.insertEvent = function(event){
 			current.currentEvent = event;
+			console.log("~!~!~!~!~!~!~! INSERTING INTO FACTORY :", current.currentEvent)
 		}
 		return current;
 	})
