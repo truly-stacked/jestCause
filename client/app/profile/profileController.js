@@ -1,5 +1,5 @@
-angular.module('hang.profile', [])
-	.controller('ProfileController', function ($scope,$http) {
+angular.module('hang.profile', ['hang.tone', 'hang.render'])
+	.controller('ProfileController', function ($scope,$http,tone,render) {
 
 	$scope.twitterAnalyse = function () {
 		$scope.spinner=true;
@@ -11,8 +11,11 @@ angular.module('hang.profile', [])
 		})
 		.then(function(results){
 			$scope.userData = results.data;
+			tone.grabValues(results.data.watsonResults);
+			$scope.averageValues = tone.averageValues;
+			render.renderData($scope.averageValues);
 			console.log('---->RESULTS: ', results);
 			$scope.spinner = false;
 		});
-     }
+     };
 });
