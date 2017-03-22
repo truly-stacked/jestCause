@@ -26,11 +26,9 @@ angular.module('hang.home', [])
 
 		Users.getCurrentUser()
 			.then(user => {
-				console.log('get current user called!', user)
 				$scope.user = user[0];
 				Events.getEvents($scope.user)
 				.then(events => {
-					console.log('events! ', events)
 					$scope.events = events;
 					Events.getHostedEvents($scope.user)
 					.then(hostedEvents => {
@@ -38,7 +36,6 @@ angular.module('hang.home', [])
 					})
 					.then(function() {
 						Events.getGuestList(guests => {
-							console.log('guests! ', guests)
 							$scope.eventGuests = guests;
 							Users.getUsers()
 							.then(users => {
@@ -58,7 +55,6 @@ angular.module('hang.home', [])
 		}
 
 		$scope.createEvent = function() {
-			console.log('creating event: ', $scope.event, ' guests: ', $scope.guests)
 			Events.createEvent({
 				email: $scope.user.email,
 				venue: $scope.event.venue,
@@ -68,7 +64,6 @@ angular.module('hang.home', [])
 				guests: $scope.guests
 			})
 			.then(resp => {
-				console.log('created!')
 				Events.saveGuestList([]);
 				$location.path('/events');
 				Events.getGuestList(guestList => {
@@ -79,7 +74,6 @@ angular.module('hang.home', [])
 
 		$scope.toggleHang = function () {
 			$scope.user.hang = !$scope.user.hang;
-			console.log($scope.user.hang)
 			Users.updateUser($scope.user)
 				.then(resp => console.log('updated ', resp))
 		}
@@ -122,7 +116,6 @@ angular.module('hang.home', [])
 		}
 
 		$scope.userEventAdd = function () {
-			console.log('click! ', this)
 			// this.item.invited = this.item.invited === undefined ? true : !this.item.invited;
 			if (!$scope.userIsGuest(this.item.email)) {
 				$scope.eventGuests.push(this.item.email);
@@ -131,7 +124,6 @@ angular.module('hang.home', [])
 				$scope.eventGuests.splice($scope.eventGuests.indexOf(this.item.email), 1)
 				this.item.invited = false;
 			}
-			console.log($scope.eventGuests);
 		};
 
 		$scope.userIsGuest = function(guest) {
@@ -144,7 +136,6 @@ angular.module('hang.home', [])
 
 		$scope.closeDialog = function(ev) {
 			$mdDialog.hide();
-			console.log('guests after submit ', $scope.eventGuests)
 			$scope.eventGuests = [];
 		}
 
