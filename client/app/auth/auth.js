@@ -8,7 +8,6 @@ angular.module('hang.auth', [])
 			Auth.signin($scope.user)
 				.then(function (token) {
 					$window.localStorage.setItem('com.hang', token);
-					console.log('signing in token: ', token)
 					Users.saveUser(token);
 					$location.path('/home');
 				})
