@@ -3,7 +3,7 @@ var db = require('../config/config.js');
 module.exports = {
 
 	getAttendees: function(eventID, callback) {
-		db.select('user_id').from('user_events').where('event_id', eventID)
+		db.select().from('user_events').innerJoin('users', 'user_events.user_id', 'users.id').where('event_id', eventID)
 		.then(function(userID){
 			console.log("This is what is returned from inner join table call ", userID)
 			callback(userID);

@@ -8,9 +8,8 @@ angular.module('hang.eventpage', [])
   		// }
       $scope.getAttendees = function(eventID) {
         Events.getAttendees(eventID)
-          .then(function(userIDs) {
-            console.log('Here are the userIDs returned from /attendees: ',userIDs);
-            $scope.userIDs = userIDs;
+          .then(function(users) {
+            $scope.attendees = users;
           })
       }
       $scope.currentEvent = Insert.currentEvent;
