@@ -37,7 +37,7 @@
     <hr class="hr-style">
       <div class="attendees-container">
         <div class="attendee" ng-repeat="user in attendees">
-          <img class="user-photo img-circle" ng-click="" src= {{user.profile_url}}>
+          <img class="user-photo img-circle" ng-click="openUser(user)" src= {{user.profile_url}}>
           <div class="user-name text-center">{{ user.name }}</div>
         </div>
     </div>

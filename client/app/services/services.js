@@ -182,3 +182,10 @@ angular.module('hang.services', [])
 		}
 		return current;
 	})
+	.factory('UserInsert', function($http, $location){
+		const current = {};
+		current.insert = function(user){
+			current.user = user
+		}
+		return current;
+	})

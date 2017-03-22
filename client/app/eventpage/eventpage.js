@@ -1,5 +1,5 @@
 angular.module('hang.eventpage', [])
-  .controller('eventPageCtrl', function($scope, $sce, $location, Insert, Events){
+  .controller('eventPageCtrl', function($scope, $sce, $location, Insert, Events, UserInsert){
   		// $scope.mockEvent = {
   		// 	description: 'After Hours',
   		// 	venue: 'Hack Reactor',
@@ -11,6 +11,12 @@ angular.module('hang.eventpage', [])
           .then(function(users) {
             $scope.attendees = users;
           })
+      }
+
+      $scope.openUser = function(user) {
+        console.log("firing openUser")
+        UserInsert.insert(user)
+        $location.path('/profile')
       }
       $scope.currentEvent = Insert.currentEvent;
       console.log("HERE IS THE CURRENT EVENT IN EVENTPAGE: ", $scope.currentEvent)

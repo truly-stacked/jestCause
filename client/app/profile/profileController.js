@@ -1,6 +1,6 @@
 angular.module('hang.profile', ['hang.tone', 'hang.render'])
-	.controller('ProfileController', function ($scope,$http,tone,render) {
-
+	.controller('ProfileController', function ($scope,$http,tone,render, UserInsert) {
+		$scope.user = UserInsert.user;
 	$scope.twitterAnalyse = function () {
 		$scope.spinner=true;
   	  $http({
