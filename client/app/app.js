@@ -39,7 +39,6 @@ angular.module('hang', [
 		.otherwise({
 			redirectTo: '/signin'
 		});
-
 		$locationProvider.hashPrefix('');
 		$httpProvider.interceptors.push('AttachTokens');
 	})
