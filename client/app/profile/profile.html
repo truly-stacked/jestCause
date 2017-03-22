@@ -13,11 +13,11 @@
 	</md-content>
 </div>
 
-<!-- Content --> 
+<!-- Content -->
 <div style="margin-top: 50px" class="home" ng-cloak layout="column" layout-align="center center">
 	<div flex-gt-sm="50" flex>
 		<md-content flex layout-align="center center" class="md-padding">
-			
+
 			<md-toolbar layout="row" class="md-hue-4">
 				<div class="md-toolbar-tools">
 					<span style="text-align: center">PROFILE VIEW</span>
@@ -32,15 +32,16 @@
 			<div ng-if="spinner">
              <img ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
             </div>
-			
+
 
 
 			<div> <img src="{{userData.imageUrl}}"></div>
 			<div> {{userData.handle}} </div>
 			<div> {{userData.watsonResults}} </div>
 			<h2> Analysis </h2>
-			<div id=d3Display></div> 
-			
+			<div id=d3Display></div>
+
 		</md-content>
 	</div>
 </div>
+<pre>{{ user }}</pre>
