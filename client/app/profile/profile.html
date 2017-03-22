@@ -19,22 +19,19 @@
 					<span style="text-align: center">PROFILE VIEW</span>
 				</div>
 
-
+				<!-- obtain AI anaysis from external API -->
 				<form ng-submit="twitterAnalyse()">
-				  <input type="text" ng-model="searchRequestInput" placeholder="e.g., Journey4John" required style="height:30px; width: 300px;">
+				  <input type="text" ng-model="searchRequestInput" placeholder="e.g., barackObama" class="search-field">
                   <input type="Submit" style="color: brown">
                 </form>
-
-
 			</md-toolbar>
-			<md-list flex>
-				<md-list-item layout="row" ng-repeat="item in users" ng-click="userEventAdd()" ng-class="{'userInvited': userIsGuest(this.item.email)}">
-					<img ng-class="{'hang': item.hang}" ng-src={{item.profile_url}} class="md-avatar">
-					<div class="md-list-item-text">
-						<h3>{{item.email}}</h3>
-					</div>
-				</md-list-item>
-			</md-list>
+			<div ng-if="spinner">
+             <img ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
+            </div>
+			
+			<div> <img src="{{userData.imageUrl}}"></div>
+			<div> {{userData.handle}} </div>
+			<div> {{userData.watsonResults}} </div>
 		</md-content>
 	</div>
 </div>
