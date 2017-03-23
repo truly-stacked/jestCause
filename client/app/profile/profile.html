@@ -1,5 +1,5 @@
 <div ng-controller="HomeController" ng-cloak>
-  <md-content class="md-padding">
+  <md-content class="navbar navbar-fixed-top">
     <md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
       <md-button ng-click="goHome()" name="homeButton">
         <i class="glyphicon glyphicon-home"></i>
@@ -16,7 +16,7 @@
 </div>
 
 <!-- Content -->
-<div style="margin-top: 0px" class="home" ng-cloak layout="column" layout-align="center center">
+<div style="margin-top: 100px" class="home" ng-cloak layout="column" layout-align="center center">
 	<div flex-gt-sm="50" flex>
 		<md-content flex layout-align="center center" class="md-padding">
 			<div ng-if="spinner">
@@ -30,13 +30,19 @@
 			<div> {{userData.followers}} </div>
 			<div> {{userData.friends}} </div>
 			<div>
-				<li ng-repeat="tweet in userData.tweets | limitTo:10"> {{tweet}}</li>
+      <h2> Tweets </h2>
+				<li ng-repeat="tweet in userData.tweets | limitTo:10"> {{tweet}}</li> 
 			</div>
-			<h2> Analysis </h2>
+			<h2> Profile </h2>
 			<div id=d3Display></div>
-			<dib id=d3Display_Donut></div>
+			<div id=d3Display_Donut></div>
+      <h2> Events </h2>
+        <li ng-repeat="item in events"> {{item}} </li>
 
 		</md-content>
 	</div>
 </div>
-<pre>{{ user }}</pre>
+<pre>{{user}}</pre>
+<pre>{{events}}</pre>
+<pre>{{hostedEvents}}</pre>
+

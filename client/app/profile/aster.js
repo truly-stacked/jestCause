@@ -54,7 +54,6 @@ angular.module ('hang.aster', [])
         {id:'VAR',order:6,score:(delta*100).toFixed(2),weight:1,color:'#FEC574',label:'Variance'}
       ]
 
-      // d3.csv('./aster_data.csv', function(error, data) {
         data.forEach(function(d) {
           d.id     =  d.id;
           d.order  = +d.order;

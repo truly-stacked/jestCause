@@ -5,6 +5,9 @@ angular.module('hang', [
 	'ngMaterial',
 	'hang.profile',
 	'hang.eventpage',
+	'hang.tone', 
+	'hang.render', 
+	'hang.aster',
 	'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider, $locationProvider){

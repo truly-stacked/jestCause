@@ -1,5 +1,6 @@
-angular.module('hang.profile', ['hang.tone', 'hang.render', 'hang.aster'])
-	.controller('ProfileController', function ($scope,$http,tone,render, UserInsert, aster) {
+angular.module('hang.profile', [])
+	.controller('ProfileController', function ($scope, $http , tone , render, UserInsert, aster, Events) {
+	  
 	  $scope.user = UserInsert.user;
       $scope.twitter = $scope.user.twitter_handle;
 
@@ -17,16 +18,24 @@ angular.module('hang.profile', ['hang.tone', 'hang.render', 'hang.aster'])
         headers:{'Content-Type':'application/json'},
         data: {handle: $scope.twitter}
 		})
-		.then(function(results){
+		.then(results => {
 			$scope.userData = results.data;
 			tone.grabValues(results.data.watsonResults);
 			$scope.averageValues = tone.averageValues;
 			render.renderData($scope.averageValues);
-			console.log('---->RESULTS: ', results);
 			aster.renderData($scope.averageValues);
-			$scope.spinner = false;
+			
+		    Events.getEvents($scope.user)
+		    .then(events => {
+		      $scope.events = events;
+		      Events.getHostedEvents($scope.user)
+		        .then(hostedEvents => {
+		          $scope.hostedEvents = hostedEvents;
+		          $scope.spinner = false;
+		        })
+		    })
 		})
-        .catch(function(error) {
+        .catch(error => {
           $scope.spinner = false;
           console.log(error);
           alert($scope.errorCodes[error.data]);
