@@ -4,10 +4,10 @@
       <md-button ng-click="goHome()" name="homeButton">
         <i class="glyphicon glyphicon-home"></i>
       </md-button>
-      <md-button ng-click="createEventClick($event)" name="createEvent">
+      <md-button class="heading" ng-click="createEventClick($event)" name="createEvent">
         Create Event
       </md-button>
-      <md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+      <md-button class="heading" ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
         Hang
       </md-button>
       <div ng-include="'app/home/menu.html'"></div>
@@ -16,6 +16,7 @@
 </div>
 
 <!-- Content -->
+<<<<<<< HEAD
 <div style="margin-top: 100px" class="home" ng-cloak layout="column" layout-align="center center">
 	<div flex-gt-sm="50" flex>
 		<md-content flex layout-align="center center" class="md-padding">
@@ -44,5 +45,93 @@
 </div>
 <pre>{{user}}</pre>
 <pre>{{events}}</pre>
+=======
+
+<table class="profile-container">
+  <tr>
+    <div ng-if="spinner" class="spinner-style">
+    <img class="user-photo" ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
+    </div>
+  </tr>
+  <tr>
+    <td class="table-profile">
+    <div class="profile-picture">
+      <img class="profile-image image-circle" src="{{user.profile_url}}">
+      <div class="title text-center heading">{{userData.name}}</div>
+      <div class= "venue"> followers: {{userData.followers}}</div>
+      <div class= "when"> friends: {{userData.friends}}</div>
+    </div>
+    <br>
+    <br>
+      <li ng-repeat="tweet in userData.tweets | limitTo:3"> {{tweet}}</li> 
+      <h2> Invited Events </h2>  
+      <div class="profile-outer-div" ng-repeat='item in events'>   
+        <div class= 'event-card'>
+             <img src="{{item.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
+             <div class="title text-center heading">{{item.description}}</div>
+             <div class= "venue">{{item.venue}}</div>
+             <div class= "when">{{item.when}}</div>
+        </div>
+      </div>
+
+       <h2> Hosted Events </h2>  
+      <div class="profile-outer-div" ng-repeat='item in hostedEvents'>   
+        <div class= 'event-card'>
+             <img src="{{user.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
+             <div class="title text-center heading">{{item.description}}</div>
+             <div class= "venue">{{item.venue}}</div>
+             <div class= "when">{{item.when}}</div>
+        </div>
+      </div>
+
+
+
+
+    </td>
+    <td class="table-charts">
+    <center> 
+      <h2> Personality</h2>
+      <div id=d3Display></div>
+      <h2> Current Emotions</h2>
+      <div id=d3Display_Donut></div>
+    </center>
+    </td>
+  </tr>
+</table>
+
+
+
+<!-- <div class="profile-container">
+  <div class="row" ng-if="spinner">
+    <img class="user-photo" ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img class="img-circle" src="{{user.profile_url}}">
+      <div>{{userData.name}}</div>
+      <div>{{userData.followers}}</div>
+      <div>{{userData.friends}}</div>
+      <li ng-repeat="tweet in userData.tweets | limitTo:3"> {{tweet}}</li> 
+    </div>
+
+    <div class="col">
+      <h2> Profile </h2>
+      <div class="row" id=d3Display></div>
+      <div class="row" id=d3Display_Donut></div>
+      <h2> Events </h2>  
+      <li ng-repeat="item in events"> {{item}} </li>
+    </div>	
+	</div>
+</div> -->
+
+
+
+      
+      
+<!-- 
+<pre>{{user}}</pre>
+<pre>{{events}}</pre> -->
+>>>>>>> fe8e67ff803664bf2aa8114a6602a255e0fdbe92
 <pre>{{hostedEvents}}</pre>
 

@@ -4,8 +4,8 @@ angular.module ('hang.aster', [])
 
     renderData = (dataToRender) => {
 
-     var width = 500,
-      height = 500,
+     var width = 250,
+      height = 250,
       radius = Math.min(width, height) / 2,
       innerRadius = 0.3 * radius;
 
