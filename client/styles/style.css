@@ -79,7 +79,9 @@ body{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 60%;
+	margin-left: 1%;
+	margin-top: .4%;
+	width: 70%;
 }
 
 .guestList {
@@ -107,7 +109,6 @@ body{
 .userInvited {
 	color: tomato;
 }
-
 .user-table {
 	position: fixed;
 	width: 100%;
