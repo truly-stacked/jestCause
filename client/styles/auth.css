@@ -1,0 +1,38 @@
+.signin-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-box {
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px #2d1c31;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5%;
+  height: 50vh;
+  width: 25vw;
+}
+
+.signin-field {
+  width: 75%;
+}
+
+.signin-header {
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #999999;
+}
+
+.submit-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.or {
+  margin: 1% 0 1% 0;
+  font-weight: bold;
+}
