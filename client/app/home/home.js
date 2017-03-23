@@ -47,6 +47,7 @@ angular.module('hang.home', [])
 					.then(function() {
 						Events.getGuestList(guests => {
 							$scope.eventGuests = guests;
+							console.log("GUEST LIST", guests)
 							Users.getUsers()
 							.then(users => {
 								users = users.filter(user => user.email !== $scope.user.email);
