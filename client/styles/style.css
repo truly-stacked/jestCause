@@ -109,7 +109,8 @@ body{
 }
 
 .user-table {
-	width: 24%;
+	position: fixed;
+	width: 100%;
 }
 .settings {
 	top: 5px;
