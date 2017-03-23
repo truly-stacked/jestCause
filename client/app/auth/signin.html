@@ -4,7 +4,30 @@
             <h1>Hang</h1>
         </md-button>
     </md-toolbar>
-    <div class="form">
+    <div class="signin-container">
+      <div class="signin-box">
+        <div class="siginin-field">
+          <h1 class="signin-header text-center">HANG</h1>
+          <hr class="hr-style">
+          <form id="login" class="form-group" ng-submit="signin()">
+            <div class="form-group">
+              <label class="form-label">Email:</label>
+              <input class="form-input form-control" ng-model="user.email" ng-required="true" placeholder="Email...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password:</label>
+              <input class="form-input form-control" type="password" ng-model="user.password" ng-required="true" placeholder="Password...">
+            </div>
+            <div class="submit-buttons">
+              <button type="submit" ng-click="signin()" class="sbmt btn btn-primary btn-lg"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i> Sign in</button>
+              <text class="or text-center">OR</text>
+              <button class="btn btn-primary btn-sm" ng-click="signuplink()">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form">
         <div class="md-inline-form" ng-cloak layout="column">
             <md-content layout="column" class="md-padding">
                 <div layout="column" layout-align="center center">
@@ -24,4 +47,4 @@
                 </div>
             </md-content>
         </div>
-    </div>
+    </div> -->
