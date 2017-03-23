@@ -4,10 +4,10 @@
       <md-button ng-click="goHome()" name="homeButton">
         <i class="glyphicon glyphicon-home"></i>
       </md-button>
-      <md-button ng-click="createEventClick($event)" name="createEvent">
+      <md-button class="heading" ng-click="createEventClick($event)" name="createEvent">
         Create Event
       </md-button>
-      <md-button ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
+      <md-button class="heading" ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
         Hang
       </md-button>
       <div ng-include="'app/home/menu.html'"></div>
@@ -30,7 +30,7 @@
 			<div> {{userData.followers}} </div>
 			<div> {{userData.friends}} </div>
 			<div>
-				<li ng-repeat="tweet in userData.tweets | limitTo:10"> {{tweet}}</li> 
+				<li ng-repeat="tweet in userData.tweets | limitTo:10"> {{tweet}}</li>
 			</div>
 			<h2> Analysis </h2>
 			<div id=d3Display></div>
@@ -40,4 +40,3 @@
 	</div>
 </div>
 <pre>{{ user }}</pre>
-
