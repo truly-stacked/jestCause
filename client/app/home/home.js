@@ -7,17 +7,17 @@ angular.module('hang.home', [])
 		$scope.getAll = function(){
 			Events.getAllEvents()
 			.then(function(events) {
-				$scope.allEvents = events;
 				//Line 12 - 17 adds the host object to the event object
-				$scope.hostedEvents = [];
-				$scope.allEvents.forEach(function(event) {
+				$scope.allEvents = [];
+				events.forEach(function(event) {
 					$scope.users.forEach(function(user) {
 						if(user.id === event.host_id) {
 							event.host = user;
-							$scope.hostedEvents.push(event)
+							$scope.allEvents.push(event)
 						}
 					})
 				})
+				console.log("EVENTS :", $scope.allEvents)
 			})
 		};
 
