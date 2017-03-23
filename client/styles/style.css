@@ -86,7 +86,7 @@ body{
 	display: flex;
 	flex-flow: column wrap;
 	height: relative;
-	margin-left: -40%;
+	margin-left: -55%;
 }
 
 #test {
@@ -119,6 +119,6 @@ body{
 	margin-top: 5%;
 }
 
-.container {
+/*.container {
 	width: 300px;
-}
+}*/
