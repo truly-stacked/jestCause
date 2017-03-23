@@ -27,7 +27,7 @@
     <div class="event-info">
       <div>
         <span class="event-name heading">{{ currentEvent.description }}</span>
-        <span class="event-time pull-right">{{ currentEvent.when }}
+        <span class="event-time pull-right"><i class="fa fa-clock-o" aria-hidden="true"></i>{{ currentEvent.when }}</span>
       </div>
       <div>
         <span class="event-venue heading">{{ currentEvent.venue }}</span>
@@ -35,11 +35,14 @@
       </div>
     </div>
     <hr class="hr-style">
+    <div class="attendee-list">
+      <div class="vertical-text heading">Attending</div>
       <div class="attendees-container">
         <div class="attendee" ng-repeat="user in attendees">
           <img class="user-photo img-circle" ng-click="openUser(user)" src= {{user.profile_url}}>
           <div class="user-name text-center">{{ user.name }}</div>
         </div>
+      </div>
     </div>
   </div>
 </div>
