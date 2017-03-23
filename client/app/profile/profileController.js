@@ -1,6 +1,12 @@
 angular.module('hang.profile', [])
-	.controller('ProfileController', function ($scope, $http , tone , render, UserInsert, aster, Events) {
+	.controller('ProfileController', function ($scope, $http, $location , tone , render, UserInsert, aster, Events, Insert) {
 	  
+
+	  $scope.openEvent = function(event){
+			Insert.insertEvent(event)
+			$location.path("/eventpage");
+		}
+
 	  $scope.user = UserInsert.user;
       $scope.twitter = $scope.user.twitter_handle;
 
@@ -12,6 +18,8 @@ angular.module('hang.profile', [])
 	  
 	  $scope.twitterAnalyse = function () {
 	  $scope.spinner=true;
+	  $scope.hide=false;
+
   	  $http({
 		method: 'POST',
 		url: 'http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/api/handle',
@@ -32,6 +40,7 @@ angular.module('hang.profile', [])
 		        .then(hostedEvents => {
 		          $scope.hostedEvents = hostedEvents;
 		          $scope.spinner = false;
+		          $scope.hide=true;
 		        })
 		    })
 		})
