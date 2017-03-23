@@ -85,11 +85,11 @@ angular.module('hang.render',[])
       // Descriptions
 
       descriptionMap = {
-        "Anger": "Anger - evoked due to injustice, conflict, humiliation, negligence or betrayal",
-        "Disgust": "Disgust - an emotional response of revulsion to something considered offensive or unpleasant",
-        "Fear": "Fear - shows a response to impending danger",
-        "Joy": "Joy - has shades of enjoyment, satisfaction and pleasure",
-        "Sadness": "Sadness - indicates a feeling of loss and disadvantage",
+        // "Anger": "Anger - evoked due to injustice, conflict, humiliation, negligence or betrayal",
+        // "Disgust": "Disgust - an emotional response of revulsion to something considered offensive or unpleasant",
+        // "Fear": "Fear - shows a response to impending danger",
+        // "Joy": "Joy - has shades of enjoyment, satisfaction and pleasure",
+        // "Sadness": "Sadness - indicates a feeling of loss and disadvantage",
         "Analytical": "Analytical - reasoning and analytical attitude about things",
         "Confident": "Confidence - degree of certainty",
         "Tentative": "Tentative - degree of inhibition",
@@ -104,9 +104,13 @@ angular.module('hang.render',[])
 
       let d3JSON_arr = [];
       for (let key in dataToRender) {
-        d3JSON_arr.push({'name': key, 'value': dataToRender[key], 'description': descriptionMap[key]});
+        if(key === 'Anger' || key === 'Disgust' || key === 'Fear' || key ==='Joy' || key === 'Sadness'){
+          console.log('sorry')
+        } else {
+          d3JSON_arr.push({'name': key, 'value': dataToRender[key], 'description': descriptionMap[key]});
+        }
       }
-
+      console.log(d3JSON_arr);
       render(d3JSON_arr);
     }
 
