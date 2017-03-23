@@ -1,4 +1,5 @@
 .signin-container {
+  background-color: rgb(63,81,181);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -7,12 +8,12 @@
 }
 
 .signin-box {
+  background-color: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 2px 2px 10px #2d1c31;
+  box-shadow: 5px 5px 20px #2d1c31;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -5%;
   height: 50vh;
   width: 25vw;
 }
@@ -35,4 +36,14 @@
 .or {
   margin: 1% 0 1% 0;
   font-weight: bold;
+}
+
+.sbmt {
+  background-color: rgb(63,81,181);
+  color: #FFFFFF;
+}
+
+.sgn {
+  background-color: rgb(63,81,181);
+  color: #FFFFFF;
 }
