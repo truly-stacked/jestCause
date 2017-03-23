@@ -82,6 +82,13 @@ body{
 	width: 60%;
 }
 
+.guestList {
+	display: flex;
+	flex-flow: column wrap;
+	height: relative;
+	margin-left: -40%;
+}
+
 #test {
 	min-height: 200px;
 	min-width: 200px;
