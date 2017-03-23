@@ -1,4 +1,4 @@
-<div ng-controller="HomeController" ng-cloak>
+<div class= "homepage" ng-controller="HomeController" ng-cloak>
 	<md-content class="md-padding">
 		<md-toolbar layout-align="space-between" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
 			<md-button ng-click="goHome()" name="homeButton">
@@ -15,15 +15,13 @@
 	</md-content>
 </div>
 
-
-
 <div class="home-container">
 	<div class="card-container">
-		<div ng-click='openEvent(event)' ng-repeat='event in allEvents'>
+		<div class="outer-div" ng-click='openEvent(event)' ng-repeat='event in allEvents'>
 				<md-card class= 'event-card'>
 					 <md-card-content class="card">
-						 <img src="http://placehold.it/100x100" class="card-image img-circle" alt="user avatar">
-						 <h6>{{event.description}}</h6>
+						 <img src="{{event.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
+						 <h6>Hosted by: {{event.name}}</h6>
 						 <h6>{{event.venue}}</h6>
 						 <h6>{{event.when}}</h6>
 					</md-card-content>

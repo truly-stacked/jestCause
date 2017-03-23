@@ -23,6 +23,7 @@ module.exports = {
 	getEvents: function(req, res, next) {
 		Event.getEvents(req.headers.email, function(events) {
 			if (events) {
+				console.log(events)
 				res.send(events);
 			} else {
 				next(new Error('no event found'));
@@ -33,16 +34,11 @@ module.exports = {
 	getAllEvents : function(req,res,next){
 		Event.getAllEvents(function(events){
 			if(events){
-				console.log("These are ALL OF THE POSSIBLE EVENTS ", events);
 				res.send(events);
 			} else{
 				next(new Error('this wasnt successful'));
 			}
 		})
-
-
-
-
 
 	},
 

@@ -11,8 +11,9 @@ module.exports = {
 	},
 
 	getAllEvents: function(callback){
-		db.select().from('events')
+		db.select().from('events').innerJoin('users', 'users.id', 'events.host_id')
 		.then(function(events){
+			console.log(events);
 			callback(events)
 		}).catch( err => console.error(err))
 	},
