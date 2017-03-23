@@ -16,66 +16,59 @@
 </div>
 
 <!-- Content -->
-<<<<<<< HEAD
-<div style="margin-top: 100px" class="home" ng-cloak layout="column" layout-align="center center">
-	<div flex-gt-sm="50" flex>
-		<md-content flex layout-align="center center" class="md-padding">
-			<div ng-if="spinner">
-             <img ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
-            </div>
 
-
-
-			<div> <img class="img-circle" src="{{user.profile_url}}"></div>
-			<div> {{userData.name}} </div>
-			<div> {{userData.followers}} </div>
-			<div> {{userData.friends}} </div>
-			<div>
-      <h2> Tweets </h2>
-				<li ng-repeat="tweet in userData.tweets | limitTo:10"> {{tweet}}</li> 
-			</div>
-			<h2> Profile </h2>
-			<div id=d3Display></div>
-			<div id=d3Display_Donut></div>
-      <h2> Events </h2>
-        <li ng-repeat="item in events"> {{item}} </li>
-
-		</md-content>
-	</div>
+<div ng-if="spinner" class="spinner-style">
+    <img class="user-photo" ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
 </div>
-<pre>{{user}}</pre>
-<pre>{{events}}</pre>
-=======
-
 <table class="profile-container">
   <tr>
-    <div ng-if="spinner" class="spinner-style">
-    <img class="user-photo" ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
-    </div>
-  </tr>
-  <tr>
     <td class="table-profile">
-    <div class="profile-picture">
-      <img class="profile-image image-circle" src="{{user.profile_url}}">
+    <div ng-if="hide" class="profile-picture">
+      <img class="img-circle profile-image" src="{{user.profile_url}}">
       <div class="title text-center heading">{{userData.name}}</div>
       <div class= "venue"> followers: {{userData.followers}}</div>
       <div class= "when"> friends: {{userData.friends}}</div>
     </div>
-    <br>
-    <br>
-      <li ng-repeat="tweet in userData.tweets | limitTo:3"> {{tweet}}</li> 
-      <h2> Invited Events </h2>  
-      <div class="profile-outer-div" ng-repeat='item in events'>   
-        <div class= 'event-card'>
+  
+   <div ng-if="hide">
+      <h2> Twitter </h2>
+   </div>
+      <li ng-repeat="tweet in userData.tweets | limitTo:4"> {{tweet}}</li> 
+
+  <div ng-if="hide">
+      <h2> Mood</h2>
+  </div>
+      <div id=d3Display_Donut></div>
+
+    </td>
+    <td class="table-charts">
+
+    <center>    
+    <div ng-if="hide">
+      <h2> Personality</h2> 
+    </div>
+      <div id=d3Display></div>
+   
+   <div ng-if="hide">
+    <h2> Invited Events </h2>
+   </div> 
+
+     <div class="profile-card-container"> 
+      <div ng-repeat='item in events' ng-click='openEvent(item)'>   
+        <div class='event-card'>
              <img src="{{item.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
              <div class="title text-center heading">{{item.description}}</div>
              <div class= "venue">{{item.venue}}</div>
              <div class= "when">{{item.when}}</div>
         </div>
       </div>
+    </div>
 
-       <h2> Hosted Events </h2>  
-      <div class="profile-outer-div" ng-repeat='item in hostedEvents'>   
+    <div ng-if="hide">   
+      <h2> Hosted Events </h2>
+    </div>
+    <div class="profile-card-container">
+      <div ng-repeat='item in hostedEvents' ng-click='openEvent(item)'>   
         <div class= 'event-card'>
              <img src="{{user.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
              <div class="title text-center heading">{{item.description}}</div>
@@ -83,17 +76,7 @@
              <div class= "when">{{item.when}}</div>
         </div>
       </div>
-
-
-
-
-    </td>
-    <td class="table-charts">
-    <center> 
-      <h2> Personality</h2>
-      <div id=d3Display></div>
-      <h2> Current Emotions</h2>
-      <div id=d3Display_Donut></div>
+    </div>
     </center>
     </td>
   </tr>
@@ -131,7 +114,6 @@
       
 <!-- 
 <pre>{{user}}</pre>
-<pre>{{events}}</pre> -->
->>>>>>> fe8e67ff803664bf2aa8114a6602a255e0fdbe92
+<pre>{{events}}</pre> 
 <pre>{{hostedEvents}}</pre>
-
+-->
