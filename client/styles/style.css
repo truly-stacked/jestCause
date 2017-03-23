@@ -29,6 +29,7 @@ body{
 
 .event-card{
 	background-color: #FFFFFF;
+	border: .5px solid #B5B5B5;
 	height: 225px;
 	width: 225px;
 	margin: 10px 10px 10px 10px;
