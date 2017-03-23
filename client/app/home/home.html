@@ -19,10 +19,10 @@
 	<div class="card-container">
 		<div class="outer-div" ng-click='openEvent(event)' ng-repeat='event in allEvents'>
 				<div class= 'event-card'>
-						 <img src="{{event.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
-						 <h6>Hosted by: {{event.name}}</h6>
-						 <h6>{{event.venue}}</h6>
-						 <h6>{{event.when}}</h6>
+						 <img src="{{event.host.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
+						 <div class="title">{{event.description}}</div>
+						 <div class= "venue">{{event.venue}}</div>
+						 <div class= "when">{{event.when}}</div>
 				</div>
 			</div>
 	</div>
