@@ -17,9 +17,15 @@ body{
 }
 
 .event-card{
-	width: 250px !important;
-	height: 250px !important;
-	margin-bottom: auto;
+	background-color: #FFFFFF;
+	height: 200px;
+	width: 200px;
+	margin: 10px 10px 10px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: auto
 }
 
 .card-image {
