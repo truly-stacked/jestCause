@@ -4,7 +4,7 @@
         <div class="siginin-field">
           <h1 class="signin-header text-center heading"><img src="images/favicon.ico"> HANG <img src="images/favicon.ico"></h1>
           <hr class="hr-style">
-          <form id="login" class="form-group" ng-submit="signin()">
+          <form id="login" class="form-group" ng.model="user" ng-submit="signin(user)">
             <div class="form-group">
               <label class="form-label">Email:</label>
               <input class="form-input form-control" ng-model="user.email" ng-required="true" placeholder="Email...">
