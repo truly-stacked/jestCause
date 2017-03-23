@@ -6,10 +6,20 @@ angular.module('hang.home', [])
 
 		$scope.getAll = function(){
 			Events.getAllEvents()
-			.then(events => $scope.allEvents = events)
+			.then(function(events) {
+				//Line 12 - 17 adds the host object to the event object
+				$scope.allEvents = [];
+				events.forEach(function(event) {
+					$scope.users.forEach(function(user) {
+						if(user.id === event.host_id) {
+							event.host = user;
+							$scope.allEvents.push(event)
+						}
+					})
+				})
+				console.log("EVENTS :", $scope.allEvents)
+			})
 		};
-
-		$scope.getAll();
 
 		$scope.openEvent = function(event){
 			Insert.insertEvent(event)
@@ -41,13 +51,13 @@ angular.module('hang.home', [])
 							.then(users => {
 								users = users.filter(user => user.email !== $scope.user.email);
 								$scope.users = users;
-							});
+							})
+							//once all users are received, then get all events in order to add user object to host object
+							.then($scope.getAll)
 						});
 					});
 				})
 			});
-
-
 
 		$scope.createEventClick = function($event) {
 			Events.saveGuestList($scope.eventGuests);
