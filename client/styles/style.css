@@ -110,9 +110,7 @@ body{
 	color: tomato;
 }
 .user-table {
-	position: fixed;
 	width: 100%;
-	overflow: scroll;
 	height: 100vh;
 }
 .settings {
