@@ -7,7 +7,7 @@
   height: 80%;
   width: 90%;
   margin-top: 5%;
-  margin-left: 10%;
+  margin-left: 5%;
 }
 
 .spinner-style {
@@ -17,6 +17,7 @@
 }
 
 .table-profile {
+  padding-right: 70px;
 	width: 300px;
 	vertical-align: top;
 }
@@ -40,6 +41,7 @@
 .profile-image {
 	height: 150px;
 	width: 150px;
+  box-shadow: 2px 2px 10px #999999;
 }
 
 
@@ -85,4 +87,9 @@
 	margin-left: 1%;
 	margin-top: .4%;
 	width: 100%;
+}
+
+.tweet-hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

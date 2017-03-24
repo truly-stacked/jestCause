@@ -12,13 +12,10 @@ body{
 	border: none;
 	box-shadow: 2px 0px 20px #2d1c31;
 }
+
 .heading {
 	font-family: 'Bree Serif', serif;
 	font-weight: bold;
-}
-
-.outer-div{
-	height: 250px;
 }
 
 .home-container {
@@ -32,7 +29,7 @@ body{
 	border: .5px solid #B5B5B5;
 	height: 225px;
 	width: 225px;
-	margin: 10px 10px 10px 10px;
+	margin: 15px 10px 15px 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -73,9 +70,11 @@ body{
 .card-image {
 	height: 100px;
 	width: 100px;
+	box-shadow: 2px 2px 10px #999999;
 }
 
 .card-container {
+	align-content: flex-start;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
