@@ -17,7 +17,6 @@ angular.module('hang.home', [])
 						}
 					})
 				})
-				console.log("EVENTS :", $scope.allEvents)
 			})
 		};
 
