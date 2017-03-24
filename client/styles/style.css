@@ -72,6 +72,7 @@ body{
 }
 
 .card-container {
+	align-content: flex-start;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
