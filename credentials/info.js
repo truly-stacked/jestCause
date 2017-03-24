@@ -1,8 +1,8 @@
 module.exports = {
   host: 'us-cdbr-iron-east-03.cleardb.net',
-  user: 'b76b500028d7c7',
-  password: 'a935b6b9',
-  database: 'heroku_e233e93b207bbdf'
+  user: 'bf9c4d3d080f04',
+  password: '4e609f6c',
+  database: 'heroku_ae04e88237e79a3'
 }
 
-//mysql://b76b500028d7c7:a935b6b9@us-cdbr-iron-east-03.cleardb.net/heroku_e233e93b207bbdf?reconnect=true
+//mysql://bf9c4d3d080f04:4e609f6c@us-cdbr-iron-east-03.cleardb.net/heroku_ae04e88237e79a3?reconnect=true
