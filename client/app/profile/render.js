@@ -14,12 +14,12 @@ angular.module('hang.render',[])
    	  outerHeight = 400,
    	  margin = { left: 155, top:0, right:0, bottom:30},
    	  barPadding = 0.2;
-   	
+
    	let xColumn = "value",
    	  yColumn = "name";
-   	 
-   	let innerWidth = outerWidth - margin.left - margin.right, 
-   	  innerHeight = outerHeight - margin.top - margin.bottom;   
+
+   	let innerWidth = outerWidth - margin.left - margin.right,
+   	  innerHeight = outerHeight - margin.top - margin.bottom;
 
    	let svg = d3.select("#d3Display").append("svg")
    	  .attr("class", "d3SVG")
@@ -33,10 +33,10 @@ angular.module('hang.render',[])
       .attr("class", "x axis")
       .attr("transform", "translate(0," + innerHeight + ")")
       .attr("class", "gridA");
-    
+
     let yAxisG = g.append("g")
       .attr("class", "y axis")
-      .attr("class", "gridB"); 
+      .attr("class", "gridB");
 
     let xScale = d3.scale.linear().range([0, innerWidth]),
       yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding),
@@ -105,12 +105,10 @@ angular.module('hang.render',[])
       let d3JSON_arr = [];
       for (let key in dataToRender) {
         if(key === 'Anger' || key === 'Disgust' || key === 'Fear' || key ==='Joy' || key === 'Sadness'){
-          console.log('sorry')
         } else {
           d3JSON_arr.push({'name': key, 'value': dataToRender[key], 'description': descriptionMap[key]});
         }
       }
-      console.log(d3JSON_arr);
       render(d3JSON_arr);
     }
 
@@ -120,4 +118,3 @@ angular.module('hang.render',[])
     }
 
   });
-
