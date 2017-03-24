@@ -28,7 +28,7 @@ body{
 	border: .5px solid #B5B5B5;
 	height: 225px;
 	width: 225px;
-	margin: 10px 10px 10px 10px;
+	margin: 15px 10px 15px 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
