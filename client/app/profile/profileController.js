@@ -1,6 +1,6 @@
 angular.module('hang.profile', [])
 	.controller('ProfileController', function ($scope, $http, $location , tone , render, UserInsert, aster, Events, Insert) {
-	  
+
 
 	  $scope.openEvent = function(event){
 			Insert.insertEvent(event)
@@ -15,7 +15,7 @@ angular.module('hang.profile', [])
         "888": "That user's tweets are protected.  Please try again.",
         "999": 'That user has no tweets.  Please try again.'
       };
-	  
+
 	  $scope.twitterAnalyse = function () {
 	  $scope.spinner=true;
 	  $scope.hide=false;
@@ -32,7 +32,7 @@ angular.module('hang.profile', [])
 			$scope.averageValues = tone.averageValues;
 			render.renderData($scope.averageValues);
 			aster.renderData($scope.averageValues);
-			
+
 		    Events.getEvents($scope.user)
 		    .then(events => {
 		      $scope.events = events;
