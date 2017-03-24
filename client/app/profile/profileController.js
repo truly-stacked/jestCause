@@ -9,7 +9,6 @@ angular.module('hang.profile', [])
 
 	  $scope.user = UserInsert.user;
       $scope.twitter = $scope.user.twitter_handle;
-
       $scope.errorCodes = {
         "34": 'There is no Twitter user with that handle.  Please try again.',
         "888": "That user's tweets are protected.  Please try again.",
