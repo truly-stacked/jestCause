@@ -30,11 +30,14 @@
       <div class= "venue"> followers: {{userData.followers}}</div>
       <div class= "when"> friends: {{userData.friends}}</div>
     </div>
-  
+
    <div ng-if="hide">
       <h2> Twitter </h2>
    </div>
-      <li ng-repeat="tweet in userData.tweets | limitTo:4"> {{tweet}}</li> 
+      <div ng-repeat="tweet in userData.tweets | limitTo:4">
+         <div class="tweet">{{tweet}}</div>
+         <hr class="tweet-hr hr-style">
+      </div>
 
   <div ng-if="hide">
       <h2> Mood</h2>
@@ -44,18 +47,14 @@
     </td>
     <td class="table-charts">
 
-    <center>    
-    <div ng-if="hide">
-      <h2> Personality</h2> 
-    </div>
-      <div id=d3Display></div>
-   
-   <div ng-if="hide">
-    <h2> Invited Events </h2>
-   </div> 
+    <center>
 
-     <div class="profile-card-container"> 
-      <div ng-repeat='item in events' ng-click='openEvent(item)'>   
+ <div ng-if="hide">
+    <h2> Invited Events </h2>
+   </div>
+
+     <div class="profile-card-container">
+      <div ng-repeat='item in events' ng-click='openEvent(item)'>
         <div class='event-card'>
              <img src="{{item.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
              <div class="title text-center heading">{{item.description}}</div>
@@ -65,11 +64,11 @@
       </div>
     </div>
 
-    <div ng-if="hide">   
+    <div ng-if="hide">
       <h2> Hosted Events </h2>
     </div>
     <div class="profile-card-container">
-      <div ng-repeat='item in hostedEvents' ng-click='openEvent(item)'>   
+      <div ng-repeat='item in hostedEvents' ng-click='openEvent(item)'>
         <div class= 'event-card'>
              <img src="{{user.profile_url}} " class="card-image img-circle" alt='https://angular.io/resources/images/logos/angular2/angular.png'>
              <div class="title text-center heading">{{item.description}}</div>
@@ -78,43 +77,12 @@
         </div>
       </div>
     </div>
+
+    <div ng-if="hide">
+      <h2> Personality</h2>
+    </div>
+      <div id=d3Display></div>
     </center>
     </td>
   </tr>
 </table>
-
-
-
-<!-- <div class="profile-container">
-  <div class="row" ng-if="spinner">
-    <img class="user-photo" ng-src="http://sample-env.zhtjbs6sdb.us-west-2.elasticbeanstalk.com/spiffygif_46x46.gif">
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <img class="img-circle" src="{{user.profile_url}}">
-      <div>{{userData.name}}</div>
-      <div>{{userData.followers}}</div>
-      <div>{{userData.friends}}</div>
-      <li ng-repeat="tweet in userData.tweets | limitTo:3"> {{tweet}}</li> 
-    </div>
-
-    <div class="col">
-      <h2> Profile </h2>
-      <div class="row" id=d3Display></div>
-      <div class="row" id=d3Display_Donut></div>
-      <h2> Events </h2>  
-      <li ng-repeat="item in events"> {{item}} </li>
-    </div>	
-	</div>
-</div> -->
-
-
-
-      
-      
-<!-- 
-<pre>{{user}}</pre>
-<pre>{{events}}</pre> 
-<pre>{{hostedEvents}}</pre>
--->
