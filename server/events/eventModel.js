@@ -5,7 +5,6 @@ module.exports = {
 	getAttendees: function(eventID, callback) {
 		db.select().from('user_events').innerJoin('users', 'user_events.user_id', 'users.id').where('event_id', eventID)
 		.then(function(userID){
-			console.log("This is what is returned from inner join table call ", userID)
 			callback(userID);
 		})
 	},
@@ -13,7 +12,6 @@ module.exports = {
 	getAllEvents: function(callback){
 		db.select().from('events')
 		.then(function(events){
-			console.log(events);
 			callback(events)
 		}).catch( err => console.error(err))
 	},

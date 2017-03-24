@@ -121,6 +121,9 @@ body{
 	margin-top: 5%;
 }
 
+.wrong {
+	background-color: tomato;
+}
 /*.container {
 	width: 300px;
 }*/

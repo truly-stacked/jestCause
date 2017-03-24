@@ -23,7 +23,6 @@ module.exports = {
 	getEvents: function(req, res, next) {
 		Event.getEvents(req.headers.email, function(events) {
 			if (events) {
-				console.log(events)
 				res.send(events);
 			} else {
 				next(new Error('no event found'));
@@ -54,9 +53,6 @@ module.exports = {
 
 	createEvent: function(req, res, next) {
 		let {venue, address, when, description, guests, email} = req.body;
-		console.log('whole request: ', req.body)
-		console.log('guests: ', guests)
-		console.log('here are the guests: ', guests)
 
 
 		Event.createEvent(req.body, function(response) {
