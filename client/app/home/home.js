@@ -76,7 +76,7 @@ angular.module('hang.home', [])
 			})
 			.then(resp => {
 				Events.saveGuestList([]);
-				$location.path('/events');
+				$location.path('/home');
 				Events.getGuestList(guestList => {
 					$scope.eventGuests = guestList;
 				});
