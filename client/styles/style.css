@@ -17,10 +17,6 @@ body{
 	font-weight: bold;
 }
 
-.outer-div{
-	height: 250px;
-}
-
 .home-container {
 	display: flex;
 	flex-direction: row;
@@ -32,7 +28,7 @@ body{
 	border: .5px solid #B5B5B5;
 	height: 225px;
 	width: 225px;
-	margin: 5px 5px 5px 5px;
+	margin: 10px 10px 10px 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
