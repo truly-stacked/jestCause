@@ -10,6 +10,16 @@ var server = email.server.connect({
 });
 
 module.exports = {
+	getAttendees: function(req, res, next){
+		Event.getAttendees(req.headers.id, function(userID){
+			if(userID) {
+				res.send(userID)
+			} else {
+				next(new Error("Could not get attendees in controller"));
+			}
+		});
+	},
+
 	getEvents: function(req, res, next) {
 		Event.getEvents(req.headers.email, function(events) {
 			if (events) {
@@ -18,6 +28,17 @@ module.exports = {
 				next(new Error('no event found'));
 			}
 		});
+	},
+
+	getAllEvents : function(req,res,next){
+		Event.getAllEvents(function(events){
+			if(events){
+				res.send(events);
+			} else{
+				next(new Error('this wasnt successful'));
+			}
+		})
+
 	},
 
 	getHostedEvents: function(req, res, next) {
@@ -32,9 +53,6 @@ module.exports = {
 
 	createEvent: function(req, res, next) {
 		let {venue, address, when, description, guests, email} = req.body;
-		console.log('whole request: ', req.body)
-		console.log('guests: ', guests)
-		console.log('here are the guests: ', guests)
 
 
 		Event.createEvent(req.body, function(response) {

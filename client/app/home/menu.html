@@ -1,14 +1,14 @@
 <md-menu-bar ng-controller="HomeController">
   <md-menu>
-    <md-button class="settings" ng-click="$mdMenu.open($event)">
+    <md-button class="settings heading" ng-click="$mdMenu.open($event)">
       <!--<img id="homeAvatar" src={{user.profile_url}}> -->
       {{user.name}}
 <!-- <img class="md-avatar" ng-src="{{user.profile_url}}"> -->
     </md-button>
     <md-menu-content width="3">
       <md-menu-item>
-        <md-button ng-click="eventList()">
-          Events
+        <md-button ng-click="profileView(user)">
+          Profile
         </md-button>
       </md-menu-item>
       <md-menu-item md-menu-origin md-menu-align-target>
