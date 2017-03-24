@@ -1,5 +1,5 @@
 angular.module('hang.home', [])
-	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, $location, $mdDialog, $route, Auth, Insert, Events) {
+	.controller('HomeController', function ($scope, $sce, Users, $mdPanel, UserInsert, $location, $mdDialog, $route, Auth, Insert, Events) {
 		$scope.goHome = function() {
 			$location.path('/home');
 		}
@@ -104,8 +104,9 @@ angular.module('hang.home', [])
 				});
 		}
 
-		$scope.eventList = function () {
-			$location.path('/events');
+		$scope.profileView = function (user) {
+			UserInsert.insert(user);
+			$location.path('/profile');
 		}
 
 		$scope.changeUrl = function (ev) {
