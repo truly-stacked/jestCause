@@ -9,13 +9,11 @@ angular.module('hang.eventpage', [])
       Events.getAttendees(eventID)
       .then(function(users) {
         $scope.attendees = users;
-        console.log($scope.attendees);
         //line 11-16 adds the host to the attendees
         Users.getUsers()
         .then(function(users) {
           users.forEach(function(user) {
             if(user.id === $scope.host_id){
-              console.log("USER MATCHES HOST");
               $scope.attendees.push(user);
             }
           })
