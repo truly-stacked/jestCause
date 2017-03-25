@@ -13,7 +13,7 @@ describe('Loggin Tester', function() {
     browser.sleep(3000);
     element(by.css('[class="attendee ng-scope"]')).click();
     browser.sleep(8000);
-    element(by.css('[class="home-button md-button md-ink-ripple"]')).click();
+    element(by.css('[class="homeButton md-button md-ink-ripple"]')).click();
     browser.sleep(3000);
     element(by.css('[class="settings heading md-button md-ink-ripple"]')).click();
     browser.sleep(1000);
