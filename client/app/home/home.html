@@ -1,20 +1,19 @@
 <div class= "homepage" ng-controller="HomeController" ng-cloak>
 	<md-content class="navbar navbar-fixed-top">
-		<md-toolbar layout-align="space-between" class="md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
-			<md-button ng-click="goHome()" name="homeButton">
+		<md-toolbar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" layout="row">
+			<md-button class="homeButton" ng-click="goHome()" name="homeButton">
 				<img src="images/favicon.ico">
-			</md-button>
-			<md-button class="heading" ng-click="createEventClick($event)" name="createEvent">
-				Create Event
 			</md-button>
 			<md-button class="heading" ng-class="{'hang': user.hang}" ng-click="toggleHang()" name="hangButton" id="hangButton">
 				Hang
 			</md-button>
-			<div ng-include="'app/home/menu.html'"></div>
+			<div class="profile-button" ng-include="'app/home/menu.html'"></div>
 		</md-toolbar>
 	</md-content>
 </div>
-
+<div class="create-button-container">
+	<button class="create-button heading btn btn-lg" ng-click="createEventClick($event)">Create Event</button>
+</div>
 <div class="home-container">
 	<div class="card-container">
 		<div class="outer-div" ng-click='openEvent(event)' ng-repeat='event in allEvents'>
