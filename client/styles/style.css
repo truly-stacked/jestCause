@@ -11,6 +11,8 @@ body{
 .navbar {
 	border: none;
 	box-shadow: 2px 0px 20px #2d1c31;
+	display: flex;
+	align-items: center;
 }
 
 .heading {
@@ -21,7 +23,18 @@ body{
 .home-container {
 	display: flex;
 	flex-direction: row;
+	margin-top: 1%;
+}
+
+.create-button-container {
 	margin-top: 7%;
+	display: flex;
+	justify-content: center;
+}
+
+.create-button {
+	background-color: rgb(63, 81, 181);
+	color: #FFFFFF;
 }
 
 .event-card{
@@ -118,6 +131,19 @@ body{
 
 .form {
 	margin-top: 5%;
+}
+
+.homeButton {
+	margin-right: 0px;
+}
+.profile-button {
+	position: absolute;
+	right: 0px;
+}
+
+#hangButton {
+	font-size: 1.5em;
+	margin-left: 0px;
 }
 
 .wrong {
